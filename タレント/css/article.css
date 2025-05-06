@@ -1,0 +1,96 @@
+/* 全体設定 */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* ヘッダー */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 40px;
+}
+
+nav {
+  flex-grow: 1;
+  text-align: center;
+}
+
+nav ul {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* メイン */
+.article-main {
+  padding: 140px 20px 60px; /* ヘッダーの下に余白 */
+  text-align: center;
+}
+
+.article-header {
+  margin-bottom: 40px;
+}
+
+.article-title {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.article-date {
+  font-size: 18px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.article-image {
+  width: 100%;
+  height: 400px; /* 一定の高さ */
+  object-fit: cover; /* 写真をアスペクト比に合わせて切り取る */
+  border-radius: 10px;
+}
+
+/* 本文 */
+.article-content {
+  margin-top: 40px;
+  font-size: 20px;
+  line-height: 1.8;
+  text-align: left;
+  width: 80%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  font-size: 14px;
+  margin-top: 40px;
+}

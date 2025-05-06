@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocearya Group - 公式サイト</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="ロゴ/ロゴ.png">
+
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/sample01.jpg" alt="Ocearyaロゴ">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="about/about.html">ABOUT</a></li>
+      <li><a href="news/news.html">ニュース</a></li>
+      <li><a href="タレント/talents.html">所属タレント</a></li>
+      <li><a href="問い合わせ/contact.html">問い合わせ</a></li>
+      <li><a href="応募/応募.html">応募</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- メインビジュアル -->
+<section class="hero">
+  <img src="images/sample02.jpg" alt="メインビジュアル" class="main-photo">
+  <div class="hero-text">
+    <h1>創る力を、次の波へ。</h1>
+    <p>Ocearya Group公式サイトへようこそ。</p>
+  </div>
+</section>
+
+<!-- ABOUTセクション -->
+<section id="about" class="section">
+  <div class="section-title">ABOUT</div>
+  <a href="about/about.html" class="section-button">詳しく見る</a>
+  <img src="images/sample03.jpg" alt="ABOUT用写真" class="section-image">
+</section>
+
+<!-- NEWSセクション -->
+<section id="news" class="section">
+  <div class="section-title">ニュース</div>
+  <a href="news/news.html" class="section-button">ニュース一覧</a>
+  <img src="images/sample04.jpg" alt="ニュース用写真" class="section-image">
+</section>
+
+<!-- TALENTSセクション -->
+<section id="talents" class="section">
+  <div class="section-title">所属タレント</div>
+  <a href="タレント/talents.html" class="section-button">タレントを見る</a>
+  <img src="images/sample05.jpg" alt="タレント用写真" class="section-image">
+
+  <!-- スライドショー -->
+  <div class="slideshow-container">
+    <div class="slide">
+      <img src="images/slide/slide1.jpg" alt="スライド1">
+    </div>
+    <div class="slide">
+      <img src="images/slide/slide2.jpg" alt="スライド2">
+    </div>
+    <div class="slide">
+      <img src="images/slide/slide3.jpg" alt="スライド3">
+    </div>
+
+    <!-- 左右矢印 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</section>
+
+<!-- CONTACTセクション -->
+<section id="contact" class="section">
+  <div class="section-title">問い合わせ</div>
+  <a href="問い合わせ/contact.html" class="section-button">問い合わせフォームへ</a>
+  <img src="images/sample06.jpg" alt="問い合わせ用写真" class="section-image">
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-left">
+      <img src="ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo">
+    </div>
+
+    <div class="footer-links">
+      <ul>
+        <li><a href="about/about.html">ABOUT</a></li>
+        <li><a href="問い合わせ/contact.html">問い合わせ</a></li>
+        <li><a href="応募/応募.html">応募</a></li>
+        <li><a href="プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <ul>
+        <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank">Discord</a></li>
+        <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank">YouTube</a></li>
+        <li><a href="https://tiktok.com/" target="_blank">TikTok</a></li>
+        <li><a href="https://lin.ee/y6uf9zR" target="_blank">LINE</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 OcearyaGroup</p>
+  </div>
+</footer>
+
+
+<script src="js/script.js"></script>
+</body>
+</html>
+
+<div class="slide" id="slide">
+  <div class="slide-images">
+    <img src="images/slide1.jpg" alt="スライド1">
+    <img src="images/slide2.jpg" alt="スライド2">
+    <img src="images/slide3.jpg" alt="スライド3">
+  </div>
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
