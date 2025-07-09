@@ -60,8 +60,7 @@
       background-color: #2980b9;
     }
   </style>
-<link rel="icon" href="../ロゴ/ロゴ.png">
-
+  <link rel="icon" href="../ロゴ/ロゴ.png">
 </head>
 <body>
 
@@ -105,46 +104,28 @@
 
     const formData = new FormData(this);
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzP4TGsdq9tJHObw6jIl7gv6neEupo6vmcnWE3tOhp__gFfxAJ7wxdM9YReAt4oNu5i/exec';
+    const data = {
+      名前: formData.get("名前"),
+      連絡先: formData.get("連絡先"),
+      問い合わせ種別: formData.get("問い合わせ種別"),
+      問い合わせ内容: formData.get("問い合わせ内容"),
+      添付資料URL: formData.get("添付資料URL") || "なし"
+    };
 
-const data = {
-  名前: formData.get("名前"),
-  連絡先: formData.get("連絡先"),
-  問い合わせ種別: formData.get("問い合わせ種別"),
-  問い合わせ内容: formData.get("問い合わせ内容"),
-  添付資料URL: formData.get("添付資料URL") || "なし"
-};
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzP4TGsdq9tJHObw6jIl7gv6neEupo6vmcnWE3tOhp__gFfxAJ7wxdM9YReAt4oNu5i/exec';
 
-fetch(scriptUrl, {
-  method: 'POST',
-  body: JSON.stringify(data),
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-.then(response => {
-  alert('送信が完了しました。ありがとうございました！');
-  document.getElementById('contactForm').reset();
-})
-.catch(error => {
-  alert('送信中にエラーが発生しました。');
-  console.error('Error:', error);
-});
-
-    fetch(webhookUrl, {
+    fetch(scriptURL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(messageData)
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
     })
     .then(response => {
-      alert('送信が完了しました。このタブを閉じても大丈夫です。');
+      alert('送信が完了しました。ありがとうございました！');
       document.getElementById('contactForm').reset();
     })
     .catch(error => {
-      alert('送信が完了しました。このタブを閉じても大丈夫です。');
-      console.error('Error:', error);
+      alert('送信中にエラーが発生しました。もう一度お試しください。');
+      console.error('Error!', error.message);
     });
   });
 </script>
@@ -178,7 +159,6 @@ fetch(scriptUrl, {
     <p>© 2025 OcearyaGroup</p>
   </div>
 </footer>
-
 
 </body>
 </html>
