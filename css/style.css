@@ -6,6 +6,11 @@ body {
   color: #fff;
 }
 
+img {
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
 /* ヘッダー */
 header {
   display: flex;
@@ -51,15 +56,17 @@ nav ul li a {
   position: relative;
   height: 100vh;
   overflow: hidden;
-  margin-top: 80px; /* ヘッダー分 */
+  margin-top: 80px;
 }
 
 .hero img.main-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  image-rendering: auto;
 }
 
+/* テキスト */
 .hero-text {
   position: absolute;
   top: 50%;
@@ -105,36 +112,73 @@ nav ul li a {
 
 .section-image {
   width: 100%;
-  max-height: 400px;
-  object-fit: cover;
+  max-width: 1200px;
+  height: auto;
   margin-top: 20px;
+  image-rendering: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* スライドショー */
+/* スライドショー親コンテナ */
 .slideshow-container {
   position: relative;
   margin: 40px auto;
-  max-width: 90%;
-  height: 300px;
-  overflow: hidden;
-}
-
-.slide {
-  display: none;
-}
-
-.slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 1728px;  /* 最大幅1728px */
+  height: 300px;      /* 高さ固定 */
+  overflow: hidden;
+  background-color: #000;
   border-radius: 10px;
 }
 
+/* 各スライド */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 100%;     /* 初期は画面外右 */
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  border-radius: 10px;
+  transition: left 0.6s ease;
+  z-index: 0;
+
+  /* 画像中央寄せのためflex追加 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+/* アクティブスライド */
+.slide.active {
+  left: 0;       /* 表示中は左端 */
+  z-index: 1;
+}
+
+/* 前スライドは画面外左に */
+.slide.prev-slide {
+  left: -100%;
+  z-index: 0;
+}
+
+/* スライド内の画像 */
+.slide img {
+  width: auto;          /* 幅自動 */
+  max-width: 100%;      /* 最大幅親要素に合わせる */
+  height: 100%;         /* 高さ固定 */
+  object-fit: contain;  /* 縦横比維持して画像全体を表示 */
+  border-radius: 10px;
+  background: transparent;
+}
+
+/* 左右矢印ボタン */
 .prev, .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
   padding: 16px;
   color: white;
   font-weight: bold;
@@ -143,6 +187,7 @@ nav ul li a {
   transform: translateY(-50%);
   background-color: rgba(0,0,0,0.5);
   border-radius: 50%;
+  z-index: 2;
 }
 
 .prev {
@@ -153,8 +198,19 @@ nav ul li a {
   right: 20px;
 }
 
+/* フッター */
 footer {
   text-align: center;
   padding: 20px;
   background: #111;
+}
+
+/* レスポンシブ対応：600px以下で高さ自動調整 */
+@media (max-width: 600px) {
+  .slideshow-container {
+    height: auto;
+  }
+  .slide, .slide img {
+    height: auto;
+  }
 }
