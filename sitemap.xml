@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!--  created with free sitemap generation system www.sitemapxml.jp  --> 
+<url>
+  <loc>https://ocearya.vercel.app/index.html/</loc>
+  <priority>1.0</priority>
+  <lastmod>2025-07-13T12:18:23+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/index.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2025-07-13T12:18:23+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/about/about.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2025-07-13T12:18:23+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/news/news.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2025-07-13T12:18:23+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/news/articles/001.html</loc>
+  <priority>0.7</priority>
+  <lastmod>2025-07-13T12:18:24+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/home/index.html</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/talents/talents.html</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/contact/contact.html</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://ocearya.vercel.app/apply/apply.html</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+</urlset>
