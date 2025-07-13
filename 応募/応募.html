@@ -4,29 +4,51 @@
   <meta charset="UTF-8" />
   <title>Ocearya Group 応募フォーム</title>
   <style>
-    body {
+      body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
       padding: 20px;
+      margin: 0;
     }
     header {
-      /* headerがstyle内にあったのは誤りなので削除 */
+      background: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header .logo img {
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
     }
     form {
       background: white;
       padding: 20px;
       border-radius: 8px;
-      max-width: 600px;
-      margin: auto;
+      max-width: 500px;
+      margin: 30px auto;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    input, select, textarea, button {
+    input, textarea, select, button {
       width: 100%;
       margin-bottom: 15px;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      box-sizing: border-box;
     }
     button {
       background-color: #3498db;
@@ -37,15 +59,28 @@
     button:hover {
       background-color: #2980b9;
     }
-    p.note {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: -10px;
-      margin-bottom: 15px;
-    }
   </style>
+  <link rel="icon" href="../ロゴ/ロゴ.png">
 </head>
 <body>
+
+<header>
+  <div class="logo">
+    <img src="images/sample01.jpg" alt="Ocearyaロゴ">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../about/about.html">ＡＢＯＵＴ</a></li>
+      <li><a href="../news/news.html">ニュース</a></li>
+      <li><a href="../依頼/依頼.html">依頼</a></li>
+      <li><a href="../タレント/talents.html">出品サービス</a></li>
+      <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
+      <li><a href="../応募/応募.html">応募</a></li>
+    </ul>
+  </nav>
+</header>
+
 
 <h2 style="text-align:center;">Ocearya Group 応募フォーム</h2>
 <h3 style="text-align:center;">このフォームは、OcearyaGroupの管理課のみに送られます。</h3>
