@@ -1,69 +1,184 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>依頼フォーム | Ocearya Group</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
+      background-color: #000;
+      color: #fff;
       margin: 0;
+      padding: 0;
     }
+
     header {
-      background: white;
-      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.9);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
     }
-    header .logo img {
+
+    .logo img {
       height: 40px;
     }
+
+    nav {
+      flex-grow: 1;
+      text-align: center;
+    }
+
     nav ul {
+      display: inline-flex;
       list-style: none;
-      display: flex;
-      padding: 0;
       margin: 0;
+      padding: 0;
     }
+
     nav ul li {
-      margin-left: 20px;
+      margin: 0 10px;
     }
+
     nav ul li a {
+      color: #fff;
       text-decoration: none;
-      color: #333;
       font-weight: bold;
+      font-size: 14px;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    h2, h3 {
+      margin-top: 120px;
+      text-align: center;
+    }
+
     form {
-      background: white;
+      background: #111;
       padding: 20px;
       border-radius: 8px;
       max-width: 600px;
       margin: 30px auto;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
     }
+
     input, textarea, select, button {
       width: 100%;
       margin-bottom: 15px;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: 5px;
       font-size: 1rem;
+      background-color: #222;
+      color: #fff;
     }
+
+    textarea {
+      resize: vertical;
+    }
+
     button {
       background-color: #3498db;
       color: white;
       border: none;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #2980b9;
     }
+
     .note {
       color: red;
       font-weight: bold;
       text-align: center;
+    }
+
+    footer {
+      background-color: #111;
+      padding: 20px;
+      font-size: 14px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 20px 0;
+    }
+
+    .footer-logo {
+      height: 40px;
+    }
+
+    .footer-links ul,
+    .footer-social ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li,
+    .footer-social li {
+      margin: 5px 0;
+    }
+
+    .footer-links a,
+    .footer-social a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ハンバーガーとスマホ対応 */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        display: block;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      h2, h3 {
+        margin-top: 160px;
+      }
     }
   </style>
 </head>
@@ -71,8 +186,9 @@
 
 <header>
   <div class="logo">
-    <img src="../ロゴ/ロゴ.png" alt="Ocearyaロゴ">
+    <img src="../ロゴ/ロゴ.png" alt="Ocearyaロゴ" />
   </div>
+  <button class="menu-toggle" aria-label="メニュー切替">&#9776;</button>
   <nav>
     <ul>
       <li><a href="../index.html">ホーム</a></li>
@@ -86,8 +202,8 @@
   </nav>
 </header>
 
-<h2 style="text-align:center;">Ocearya Group 依頼フォーム</h2>
-<h3 style="text-align:center;">ご依頼内容を下記フォームよりご記入ください。</h3>
+<h2>Ocearya Group 依頼フォーム</h2>
+<h3>ご依頼内容を下記フォームよりご記入ください。</h3>
 
 <form action="https://script.google.com/macros/s/AKfycbyFB6liyPRfuopzHeYC14RzMHxXIeVY5NjI4t4Kvcrk/dev" method="POST">
   <input type="text" name="名前" placeholder="お名前（ニックネーム可）" required>
@@ -149,6 +265,14 @@
     <p>© 2025 OcearyaGroup</p>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
