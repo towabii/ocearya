@@ -1,22 +1,28 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const totalSlides = slides.length;
 
-// 次/前ボタン
+function showSlide(newIndex) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active", "prev-slide");
+    if (i === newIndex) {
+      slide.classList.add("active");
+    } else if (i === slideIndex) {
+      slide.classList.add("prev-slide");
+    }
+  });
+  slideIndex = newIndex;
+}
+
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  let newIndex = (slideIndex + n + totalSlides) % totalSlides;
+  showSlide(newIndex);
 }
 
-// スライド表示
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-}
+// 初期表示
+showSlide(slideIndex);
 
-// 自動スライド（任意）
-setInterval(() => { plusSlides(1); }, 5000);
+// 自動スライド（5秒ごと）
+setInterval(() => {
+  plusSlides(1);
+}, 5000);
