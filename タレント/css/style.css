@@ -4,6 +4,12 @@ body {
   font-family: Arial, sans-serif;
   background-color: #000;
   color: #fff;
+  overflow-x: hidden;
+}
+
+img {
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
 }
 
 /* ヘッダー */
@@ -17,6 +23,7 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .logo img {
@@ -52,6 +59,7 @@ nav ul li a {
   text-align: center;
 }
 
+/* タイトル */
 .hero-text h1 {
   font-size: 80px;
   margin-bottom: 20px;
@@ -70,10 +78,10 @@ nav ul li a {
   gap: 30px;
 }
 
-/* ニュース1件 */
+/* ニュースアイテム */
 .news-item {
   display: flex;
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   background-color: #111;
   border-radius: 10px;
@@ -81,6 +89,7 @@ nav ul li a {
   text-decoration: none;
   color: #fff;
   transition: background 0.3s;
+  box-sizing: border-box;
 }
 
 .news-item:hover {
@@ -89,8 +98,10 @@ nav ul li a {
 
 .news-item img {
   width: 300px;
-  height: 200px;
+  height: auto;
+  aspect-ratio: 3/2;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .news-content {
@@ -120,4 +131,129 @@ footer {
   background: #111;
   font-size: 14px;
   margin-top: 40px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    width: 100%;
+    text-align: left;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.95);
+    margin-top: 10px;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    display: block;
+    padding: 10px 15px;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    z-index: 1001;
+  }
+
+  .news-item {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .news-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .news-content {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .hero-text h2 {
+    font-size: 20px;
+  }
+
+  .news-title {
+    font-size: 20px;
+  }
+
+  .news-description {
+    font-size: 16px;
+  }
+}
+
+/* ハンバーガーメニュー PC 非表示 */
+.menu-toggle {
+  display: none;
+}
+/* ハンバーガーボタンの初期状態（PC非表示） */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+/* スマホ時だけ表示 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
 }
