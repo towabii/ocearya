@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>問い合わせフォーム | Ocearya Group</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -57,3 +63,71 @@
   <link rel="icon" href="../ロゴ/ロゴ.png">
 </head>
 <body>
+
+<header>
+  <div class="logo">
+    <img src="images/sample01.jpg" alt="Ocearyaロゴ">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../about/about.html">ＡＢＯＵＴ</a></li>
+      <li><a href="../news/news.html">ニュース</a></li>
+      <li><a href="../依頼/依頼.html">依頼</a></li>
+      <li><a href="../タレント/talents.html">出品サービス</a></li>
+      <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
+      <li><a href="../応募/応募.html">応募</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h2 style="text-align:center;">Ocearya Group 問い合わせフォーム</h2>
+<h3 style="text-align:center;">こちらからお気軽にご連絡ください。</h3>
+
+<!-- GAS に直接送信 -->
+<form action="https://script.google.com/macros/s/AKfycbzP4TGsdq9tJHObw6jIl7gv6neEupo6vmcnWE3tOhp__gFfxAJ7wxdM9YReAt4oNu5i/exec" method="POST">
+  <input type="text" name="名前" placeholder="お名前（ニックネームでもOK）" required><br>
+  <input type="text" name="連絡先" placeholder="連絡先（Discord IDまたはメールアドレス）" required><br>
+  <select name="問い合わせ種別" required>
+    <option value="">問い合わせ種別を選択してください</option>
+    <option value="Ocearya全体について">Ocearya全体について</option>
+    <option value="所属タレントについて">所属タレントについて</option>
+    <option value="技術サポート">技術サポート</option>
+    <option value="その他">その他</option>
+  </select><br>
+  <textarea name="問い合わせ内容" placeholder="お問い合わせ内容を詳しくご記入ください" required></textarea><br>
+  <input type="text" name="添付資料URL" placeholder="添付資料URL（任意）"><br>
+  <button type="submit">送信</button>
+</form>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-left">
+      <img src="../ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo">
+    </div>
+
+    <div class="footer-links">
+      <ul>
+        <li><a href="../about/about.html">ABOUT</a></li>
+        <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
+        <li><a href="../応募/応募.html">応募</a></li>
+        <li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <ul>
+        <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank">Discord</a></li>
+        <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank">YouTube</a></li>
+        <li><a href="https://tiktok.com/" target="_blank">TikTok</a></li>
+        <li><a href="https://lin.ee/y6uf9zR" target="_blank">LINE</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 OcearyaGroup</p>
+  </div>
+</footer>
+
+</body>
+</html>
