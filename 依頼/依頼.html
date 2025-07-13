@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>依頼フォーム | Ocearya Group</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+    header {
+      background: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header .logo img {
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, textarea, select, button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .note {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="../ロゴ/ロゴ.png" alt="Ocearyaロゴ">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../about/about.html">ＡＢＯＵＴ</a></li>
+      <li><a href="../news/news.html">ニュース</a></li>
+      <li><a href="../依頼/依頼.html">依頼</a></li>
+      <li><a href="../タレント/talents.html">出品サービス</a></li>
+      <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
+      <li><a href="../応募/応募.html">応募</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h2 style="text-align:center;">Ocearya Group 依頼フォーム</h2>
+<h3 style="text-align:center;">ご依頼内容を下記フォームよりご記入ください。</h3>
+
+<form action="【ここにGASのWeb App URLを入れる】" method="POST">
+  <input type="text" name="名前" placeholder="お名前（ニックネーム可）" required>
+  <input type="text" name="連絡先" placeholder="メールアドレス または LINEの有無" required>
+
+  <select name="依頼内容カテゴリ" required>
+    <option value="">依頼の内容を選択</option>
+    <option value="デザイン">デザイン</option>
+    <option value="動画編集">動画編集</option>
+    <option value="プログラミング">プログラミング</option>
+    <option value="相談">相談</option>
+    <option value="Ai">AI</option>
+    <option value="ITパスポートコーチング">ITパスポートコーチング</option>
+    <option value="イラストモデリング">イラストモデリング</option>
+    <option value="その他">その他</option>
+  </select>
+
+  <input type="text" name="依頼タイトル" placeholder="依頼タイトル" required>
+  <textarea name="依頼詳細" placeholder="依頼内容を詳しくご記入ください" required></textarea>
+  <input type="text" name="依頼金額" placeholder="依頼金額（円）" required>
+
+  <select name="送金プラン" required>
+    <option value="">送金プランを選択</option>
+    <option value="ココナラ">ココナラ</option>
+    <option value="クリエティア">クリエティア</option>
+    <option value="その他を希望">その他を希望</option>
+  </select>
+
+  <input type="date" name="完了希望日" required>
+
+  <p class="note">※オンラインで完結できる内容のサービスを提案してください。リアルで会うことが前提のサービスは依頼できません。</p>
+
+  <button type="submit">送信</button>
+</form>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-left">
+      <img src="../ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo">
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="../about/about.html">ABOUT</a></li>
+        <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
+        <li><a href="../応募/応募.html">応募</a></li>
+        <li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <ul>
+        <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank">Discord</a></li>
+        <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank">YouTube</a></li>
+        <li><a href="https://tiktok.com/" target="_blank">TikTok</a></li>
+        <li><a href="https://lin.ee/y6uf9zR" target="_blank">LINE</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 OcearyaGroup</p>
+  </div>
+</footer>
+
+</body>
+</html>
