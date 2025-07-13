@@ -12,7 +12,10 @@
   <div class="logo">
     <img src="../images/sample01.jpg" alt="Ocearyaロゴ">
   </div>
-  <nav>
+
+<!-- ハンバーガーボタン -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+<nav id="main-nav">
     <ul>
       <li><a href="../../index.html">ホーム</a></li>
       <li><a href="../../about/about.html">ＡＢＯＵＴ
@@ -78,6 +81,12 @@
   </div>
 </footer>
 
+<!-- ハンバーガーメニュー用JS -->
+<script>
+  function toggleMenu() {
+    document.getElementById("main-nav").classList.toggle("active");
+  }
+</script>
 
 </body>
 </html>
