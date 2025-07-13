@@ -2,72 +2,184 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ocearya Group 応募フォーム</title>
+  <link rel="icon" href="../ロゴ/ロゴ.png" />
   <style>
-      body {
+    body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
+      background-color: #000;
+      color: #fff;
       margin: 0;
+      padding: 20px;
     }
+
     header {
-      background: white;
-      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.9);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
-    header .logo img {
+
+    .logo img {
       height: 40px;
     }
+
     nav ul {
       list-style: none;
       display: flex;
       padding: 0;
       margin: 0;
     }
+
     nav ul li {
       margin-left: 20px;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #333;
+      color: #fff;
       font-weight: bold;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    main {
+      padding-top: 120px;
+    }
+
     form {
-      background: white;
+      background: #111;
       padding: 20px;
       border-radius: 8px;
-      max-width: 500px;
+      max-width: 600px;
       margin: 30px auto;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     }
+
     input, textarea, select, button {
       width: 100%;
       margin-bottom: 15px;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: 5px;
+      background: #222;
+      color: #fff;
+      font-size: 1rem;
     }
+
     button {
       background-color: #3498db;
       color: white;
       border: none;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #2980b9;
     }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #f88;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .footer-left img {
+      height: 40px;
+    }
+
+    .footer-links ul,
+    .footer-social ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li,
+    .footer-social ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a,
+    .footer-social a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      header {
+        flex-wrap: wrap;
+      }
+    }
   </style>
-  <link rel="icon" href="../ロゴ/ロゴ.png">
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="images/sample01.jpg" alt="Ocearyaロゴ">
+    <img src="images/sample01.jpg" alt="Ocearyaロゴ" />
   </div>
+  <button class="menu-toggle" aria-label="メニュー切替">&#9776;</button>
   <nav>
     <ul>
       <li><a href="../index.html">ホーム</a></li>
@@ -81,103 +193,90 @@
   </nav>
 </header>
 
+<main>
+  <h2>Ocearya Group 応募フォーム</h2>
+  <h3>このフォームは、OcearyaGroupの管理課のみに送られます。</h3>
 
-<h2 style="text-align:center;">Ocearya Group 応募フォーム</h2>
-<h3 style="text-align:center;">このフォームは、OcearyaGroupの管理課のみに送られます。</h3>
+  <!-- 以下、フォームそのまま -->
+  <form action="https://script.google.com/macros/s/AKfycbzdOflZhd0F2PZ87xzMEr7nzZ8SRQDd7BKqv2qe88MT/dev" method="POST">
+    <input type="text" name="氏名" placeholder="氏名（活動名でもOK）" required />
+    <input type="text" name="本名" placeholder="本名" />
+    <input type="date" name="生年月日" required />
+    <input type="number" name="年齢" placeholder="年齢" required />
+    <input type="email" name="メールアドレス" placeholder="メールアドレス（任意）" />
+    <input type="text" name="連絡先" placeholder="電話番号 または Discord ID または LINEの名前（公式LINE登録者のみ）" required />
+    <p class="note">※LINEの名前を記入する場合は、必ず公式LINEに「72377897」という番号を送信してください。</p>
+    <input type="text" name="居住地域" placeholder="居住地域（都道府県だけでOK）" required />
 
-<!-- GAS に直接送信 -->
-<form action="https://script.google.com/macros/s/AKfycbzdOflZhd0F2PZ87xzMEr7nzZ8SRQDd7BKqv2qe88MT/dev" method="POST">
-  <input type="text" name="氏名" placeholder="氏名（活動名でもOK）" required /><br />
-  <input type="text" name="本名" placeholder="本名" /><br />
-  <input type="date" name="生年月日" placeholder="生年月日" required /><br />
-  <input type="number" name="年齢" placeholder="年齢" required /><br />
+    <h3>【学歴・経歴】</h3>
+    <input type="text" name="学歴・職業" placeholder="現在の学年／職業" required />
+    <textarea name="過去の活動歴" placeholder="過去の活動歴（所属していた団体、プロジェクトなど）"></textarea>
+    <textarea name="受賞歴・実績" placeholder="特筆すべき受賞歴・実績（あれば）"></textarea>
 
-  <!-- メールアドレスは必須ではない -->
-  <input type="email" name="メールアドレス" placeholder="メールアドレス（メールアドレスを入力しない場合、下記の質問を2つ答えてください）" /><br />
+    <h3>【希望部門・役割】</h3>
+    <select name="応募希望部門" required>
+      <option value="一般部門">一般部門</option>
+    </select>
+    <textarea name="具体的にやりたいこと" placeholder="具体的にやりたいこと・希望ポジション"></textarea>
 
-  <!-- 連絡先は必須。電話番号・Discord ID・LINE（公式LINE利用者限定） -->
-  <input type="text" name="連絡先" placeholder="電話番号 または Discord ID または LINEの名前（公式LINE登録者のみ）" required /><br />
-  <p class="note">
-    ※LINEの名前を記入する場合は、必ず公式LINEに「72377897」という番号を送信してください。
-  </p>
+    <h3>【スキル・経験】</h3>
+    <textarea name="扱えるツール・ソフト" placeholder="扱えるツール・ソフト（例：Photoshop、Premiere Pro、Blender、Minecraftプラグイン開発など）"></textarea>
+    <textarea name="得意な作業・分野" placeholder="得意な作業・分野"></textarea>
+    <textarea name="制作物" placeholder="これまでに制作したもの（URL・ポートフォリオ添付可）"></textarea>
 
-  <input type="text" name="居住地域" placeholder="居住地域（都道府県だけでOK）" required /><br />
+    <h3>【活動可能時間(急な仕事の連絡用)】</h3>
+    <input type="text" name="活動可能時間" placeholder="1週間の活動可能時間（例：平日○時間、休日○時間）" required />
+    <input type="text" name="活動可能時間帯" placeholder="活動可能な時間帯（例：夜20時〜23時）" required />
+    <select name="長期間参加可能" required>
+      <option value="" disabled selected>長期間参加可能か選択してください</option>
+      <option value="はい">長期間参加可能（半年以上）</option>
+      <option value="いいえ">長期間参加不可</option>
+      <option value="一時派遣">臨時作業員</option>
+    </select>
 
-  <h3>【学歴・経歴】</h3>
-  <input type="text" name="学歴・職業" placeholder="現在の学年／職業" required /><br />
-  <textarea name="過去の活動歴" placeholder="過去の活動歴（所属していた団体、プロジェクトなど）"></textarea><br />
-  <textarea name="受賞歴・実績" placeholder="特筆すべき受賞歴・実績（あれば）"></textarea><br />
+    <h3>【参加にあたって】</h3>
+    <select name="同意" required>
+      <option value="" disabled selected>同意の有無を選択してください</option>
+      <option value="はい">OcearyaGroupの「無報酬または成果報酬型」活動スタイルに納得しています</option>
+      <option value="いいえ">納得していません</option>
+    </select>
+    <select name="保護者同意" required>
+      <option value="" disabled selected>保護者同意の状態を選択してください</option>
+      <option value="対象外">対象外（14歳以上の方）</option>
+      <option value="はい">保護者同意あり</option>
+      <option value="いいえ">保護者同意なし</option>
+    </select>
 
-  <h3>【希望部門・役割】</h3>
-  <select name="応募希望部門" required>
-    <option value="一般部門">一般部門</option>
-  </select><br />
-  <textarea name="具体的にやりたいこと" placeholder="具体的にやりたいこと・希望ポジション"></textarea><br />
+    <h3>【面接希望日（3候補まで）】</h3>
+    <input type="date" name="面接希望日1" />
+    <input type="date" name="面接希望日2" />
+    <input type="date" name="面接希望日3" />
 
-  <h3>【スキル・経験】</h3>
-  <textarea name="扱えるツール・ソフト" placeholder="扱えるツール・ソフト（例：Photoshop、Premiere Pro、Blender、Minecraftプラグイン開発など）"></textarea><br />
-  <textarea name="得意な作業・分野" placeholder="得意な作業・分野"></textarea><br />
-  <textarea name="制作物" placeholder="これまでに制作したもの（URL・ポートフォリオ添付可）"></textarea><br />
+    <h3>【面接希望時間帯】</h3>
+    <select name="面接希望時間帯" required>
+      <option value="" disabled selected>希望の時間帯を選択してください</option>
+      <option value="平日 18:30〜19:30">平日 18:30〜19:30</option>
+      <option value="平日 19:30〜20:30">平日 19:30〜20:30</option>
+      <option value="平日 20:30〜21:30">平日 20:30〜21:30</option>
+      <option value="休日 10:00〜11:00">休日 10:00〜11:00</option>
+      <option value="休日 11:00〜12:00">休日 11:00〜12:00</option>
+      <option value="休日 13:00〜14:00">休日 13:00〜14:00</option>
+    </select>
 
-  <h3>【活動可能時間(急な仕事の連絡用)】</h3>
-  <input type="text" name="活動可能時間" placeholder="1週間の活動可能時間（例：平日○時間、休日○時間）" required /><br />
-  <input type="text" name="活動可能時間帯" placeholder="活動可能な時間帯（例：夜20時〜23時）" required /><br />
-  <select name="長期間参加可能" required>
-    <option value="" disabled selected>長期間参加可能か選択してください</option>
-    <option value="はい">長期間参加可能（半年以上）</option>
-    <option value="いいえ">長期間参加不可</option>
-    <option value="一時派遣">臨時作業員</option>
-  </select><br />
+    <h3>【自己PR・その他】</h3>
+    <textarea name="自己PR" placeholder="自己PR（得意なこと、アピールポイント）"></textarea>
+    <textarea name="活動意気込み" placeholder="活動に対する意気込みや、将来やりたいことなど"></textarea>
+    <textarea name="質問要望" placeholder="質問・運営への要望（あれば）"></textarea>
 
-  <h3>【参加にあたって】</h3>
-  <select name="同意" required>
-    <option value="" disabled selected>同意の有無を選択してください</option>
-    <option value="はい">OcearyaGroupの「無報酬または成果報酬型」活動スタイルに納得しています</option>
-    <option value="いいえ">納得していません</option>
-  </select><br />
-  <select name="保護者同意" required>
-    <option value="" disabled selected>保護者同意の状態を選択してください</option>
-    <option value="対象外">対象外（14歳以上の方）</option>
-    <option value="はい">保護者同意あり</option>
-    <option value="いいえ">保護者同意なし</option>
-  </select><br />
-
-  <h3>【面接希望日（3候補まで）】</h3>
-  <input type="date" name="面接希望日1" /><br />
-  <input type="date" name="面接希望日2" /><br />
-  <input type="date" name="面接希望日3" /><br />
-
-  <h3>【面接希望時間帯】</h3>
-  <select name="面接希望時間帯" required>
-    <option value="" disabled selected>希望の時間帯を選択してください</option>
-    <!-- 平日18:30以降 -->
-    <option value="平日 18:30〜19:30">平日 18:30〜19:30</option>
-    <option value="平日 19:30〜20:30">平日 19:30〜20:30</option>
-    <option value="平日 20:30〜21:30">平日 20:30〜21:30</option>
-    <!-- 休日10:00以降 -->
-    <option value="休日 10:00〜11:00">休日 10:00〜11:00</option>
-    <option value="休日 11:00〜12:00">休日 11:00〜12:00</option>
-    <option value="休日 13:00〜14:00">休日 13:00〜14:00</option>
-  </select><br />
-
-  <h3>【自己PR・その他】</h3>
-  <textarea name="自己PR" placeholder="自己PR（得意なこと、アピールポイント）"></textarea><br />
-  <textarea name="活動意気込み" placeholder="活動に対する意気込みや、将来やりたいことなど"></textarea><br />
-  <textarea name="質問要望" placeholder="質問・運営への要望（あれば）"></textarea><br />
-
-  <button type="submit">送信</button>
-</form>
+    <button type="submit">送信</button>
+  </form>
+</main>
 
 <footer class="site-footer">
   <div class="footer-top">
     <div class="footer-left">
-      <img
-        src="../ロゴ/ロゴ.png"
-        alt="Ocearya ロゴ"
-        class="footer-logo"
-      />
+      <img src="../ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo" />
     </div>
-
     <div class="footer-links">
       <ul>
         <li><a href="../index.html">HOME</a></li>
@@ -186,7 +285,6 @@
         <li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
       </ul>
     </div>
-
     <div class="footer-social">
       <ul>
         <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank">Discord</a></li>
@@ -196,11 +294,18 @@
       </ul>
     </div>
   </div>
-
   <div class="footer-bottom">
     <p>© 2025 OcearyaGroup</p>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
