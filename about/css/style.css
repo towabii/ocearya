@@ -6,6 +6,11 @@ body {
   color: #fff;
 }
 
+img {
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
 /* ヘッダー */
 header {
   display: flex;
@@ -148,16 +153,6 @@ nav ul li a {
   right: 20px;
 }
 
-/* 小さい画面用に高さ自動調整 */
-@media (max-width: 600px) {
-  .slideshow-container {
-    height: auto;
-  }
-  .mySlides, .mySlides img {
-    height: auto;
-  }
-}
-
 /* 画像の並び */
 .image-container {
   display: flex;
@@ -169,10 +164,12 @@ nav ul li a {
 
 .image-container img {
   width: 30%;
-  height: 200px;
+  height: auto;
+  aspect-ratio: 16 / 9; /* 横長に */
   object-fit: cover;
   border-radius: 10px;
 }
+
 
 /* リスト */
 ul {
@@ -216,4 +213,155 @@ footer {
   max-width: 600px;
   font-size: 16px;
   line-height: 1.8;
+}
+
+/* レスポンシブ対応：600px以下で高さ自動調整 */
+@media (max-width: 600px) {
+  .slideshow-container {
+    height: auto;
+  }
+  .mySlides, .mySlides img {
+    height: auto;
+  }
+}
+
+/* スマホ対応：画面幅768px以下 */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 10px; /* 余白を詰めて調整 */
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    text-align: left;
+    width: 100%;
+    display: none; /* 初期は非表示 */
+    background-color: rgba(0, 0, 0, 0.95);
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    display: block;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  nav ul li a {
+    font-size: 18px;
+  }
+
+  .hero {
+    height: 70vh;
+    margin-top: 70px;
+  }
+
+  .hero img.main-photo {
+    object-fit: fill; /* 引き延ばしで綺麗に */
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+    white-space: nowrap; /* 一行表示 */
+    margin-bottom: 10px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: 80px 10px 40px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-button {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+
+  .slideshow-container {
+    height: 220px; /* スマホで見やすいサイズに */
+    max-width: 100%;
+  }
+
+  .mySlides,
+  .mySlides img {
+    height: 100%;
+  }
+
+  .prev, .next {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  /* ハンバーガーメニュー用ボタン */
+  .menu-toggle {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    position: absolute;
+    right: 5px; /* 右寄せを5pxにして左寄せ寄りに */
+    top: 20px;
+  }
+
+  /* 横スクロール防止 */
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* ハンバーガーメニュー用ボタン（PCでは非表示） */
+.menu-toggle {
+  display: none; /* パソコンでは非表示 */
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+/* スマホ表示時のみハンバーガーボタン表示 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* スマホだけ表示 */
+    right: 5px; /* 右端から少し内側に */
+    top: 20px;
+  }
 }
