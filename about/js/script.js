@@ -1,14 +1,28 @@
-// スライドショーのアニメーション
 let slideIndex = 0;
-showSlides();
+const slides = document.querySelectorAll(".mySlides");
+const totalSlides = slides.length;
 
-function showSlides() {
-  let slides = document.getElementsByClassName("mySlides");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 2000); // 2秒ごとにスライド
+function showSlide(newIndex) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active", "prev-slide");
+    if (i === newIndex) {
+      slide.classList.add("active");
+    } else if (i === slideIndex) {
+      slide.classList.add("prev-slide");
+    }
+  });
+  slideIndex = newIndex;
 }
+
+function plusSlides(n) {
+  let newIndex = (slideIndex + n + totalSlides) % totalSlides;
+  showSlide(newIndex);
+}
+
+// 初期表示
+showSlide(slideIndex);
+
+// 自動スライド（5秒）
+setInterval(() => {
+  plusSlides(1);
+}, 5000);
