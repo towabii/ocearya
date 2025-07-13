@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ocearya Group - ABOUT</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animate.css">
-<link rel="icon" href="../ロゴ/ロゴ.png">
-
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <link rel="icon" href="../ロゴ/ロゴ.png" />
+  <style>
+    /* ここに後述のCSSを貼ってもOK */
+  </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="images/sample01.jpg" alt="Ocearyaロゴ">
+    <img src="images/sample01.jpg" alt="Ocearyaロゴ" />
   </div>
+
+  <!-- ハンバーガーメニューボタン -->
+  <button class="menu-toggle" aria-label="メニュー開閉">&#9776;</button>
+
   <nav>
     <ul>
       <li><a href="../index.html">ホーム</a></li>
@@ -28,13 +34,12 @@
   </nav>
 </header>
 
-<!-- ABOUTセクション -->
 <section class="about-section">
   <div class="hero-text animate__animated animate__fadeInDown">
-    <h1>ABOUT</h1> <!-- 大きく中央表示 -->
-    <h2>OcearyaGroupとは？</h2> <!-- その下に小さめ -->
+    <h1>ABOUT</h1>
+    <h2>OcearyaGroupとは？</h2>
     <p class="about-description">
-      OcearyaGroup（オセアリヤグループ）は、 
+      OcearyaGroup（オセアリヤグループ）は、
       「創る力を、次の波へ。」をスローガンに、
       クリエイティブとテクノロジーで未来を切り開くプロジェクトチームです。
       イラスト制作、動画編集、
@@ -45,17 +50,16 @@
 
   <!-- スライドショー -->
   <div class="slideshow-container">
-    <div class="mySlides fade">
-      <img src="images/ABOUTfile/slide1.jpg" style="width:100%">
+    <div class="mySlides active fade">
+      <img src="images/ABOUTfile/slide1.jpg" alt="スライド1" />
     </div>
     <div class="mySlides fade">
-      <img src="images/ABOUTfile/slide2.jpg" style="width:100%">
+      <img src="images/ABOUTfile/slide2.jpg" alt="スライド2" />
     </div>
     <div class="mySlides fade">
-      <img src="images/ABOUTfile/slide3.jpg" style="width:100%">
+      <img src="images/ABOUTfile/slide3.jpg" alt="スライド3" />
     </div>
 
-    <!-- スライド矢印 -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
@@ -71,11 +75,10 @@
     すべての依頼を1週間以内で納品できるようなGroupを目指す。
   </p>
 
-  <!-- 画像 -->
   <div class="image-container">
-    <img src="images/ABOUTfile/image1.jpg" alt="ビジョン・ミッション1">
-    <img src="images/ABOUTfile/image2.jpg" alt="ビジョン・ミッション2">
-    <img src="images/ABOUTfile/image3.jpg" alt="ビジョン・ミッション3">
+    <img src="images/ABOUTfile/image1.jpg" alt="ビジョン・ミッション1" />
+    <img src="images/ABOUTfile/image2.jpg" alt="ビジョン・ミッション2" />
+    <img src="images/ABOUTfile/image3.jpg" alt="ビジョン・ミッション3" />
   </div>
 
   <h2 class="center-text animate__animated animate__fadeInUp">事業内容</h2>
@@ -89,29 +92,33 @@
   </ul>
 
   <div class="image-container">
-    <img src="images/ABOUTfile/image4.jpg" alt="事業内容1">
-    <img src="images/ABOUTfile/image5.jpg" alt="事業内容2">
-    <img src="images/ABOUTfile/image6.jpg" alt="事業内容3">
+    <img src="images/ABOUTfile/image4.jpg" alt="事業内容1" />
+    <img src="images/ABOUTfile/image5.jpg" alt="事業内容2" />
+    <img src="images/ABOUTfile/image6.jpg" alt="事業内容3" />
   </div>
 
   <h2 class="center-text animate__animated animate__fadeInUp">OcearyaGroupの特徴</h2>
-  <p><strong>多様な人材が集まりなんでも依頼できる！</strong><br>
+  <p>
+    <strong>多様な人材が集まりなんでも依頼できる！</strong><br />
     イラスト、編集、デザイン、SNS運営など、さまざまな分野の仕事を承っております。
     ココナラでの仕事も承っており、これまでに10万円以上の売り上げを上げております。
   </p>
-  <p><strong>成果報酬型の柔軟な活動スタイル</strong><br>
+  <p>
+    <strong>成果報酬型の柔軟な活動スタイル</strong><br />
     クリエイティブな挑戦を応援しつつ、実績に応じたリターンを目指します。
     成果報酬型という方式を採用しており、依頼した仕事を完了後お金を渡すという方式なので年齢関係なくだれでも働くことができます。
-  <p><strong>値段がやすい！</strong><br>
+  </p>
+  <p>
+    <strong>値段がやすい！</strong><br />
     出品サービスのほとんどは3000円から5000円ほどです。
     安くで仕事をしてもらいたい方におすすめです。
     他社よりも安く承っております。
   </p>
 
   <div class="image-container">
-    <img src="images/ABOUTfile/image7.jpg" alt="特徴1">
-    <img src="images/ABOUTfile/image8.jpg" alt="特徴2">
-    <img src="images/ABOUTfile/image9.jpg" alt="特徴3">
+    <img src="images/ABOUTfile/image7.jpg" alt="特徴1" />
+    <img src="images/ABOUTfile/image8.jpg" alt="特徴2" />
+    <img src="images/ABOUTfile/image9.jpg" alt="特徴3" />
   </div>
 
   <h2 class="center-text animate__animated animate__fadeInUp">これから</h2>
@@ -121,31 +128,29 @@
     皆様の"伝える"を一緒に作り上げていけるような存在を目指しています
   </p>
 
-<!-- 代表者挨拶 -->
-<h2 class="center-text animate__animated animate__fadeInUp">代表者挨拶</h2>
-<div class="representative-section animate__animated animate__fadeInUp">
-  <div class="representative-image">
-    <img src="images/daihyou.jpg" alt="代表者写真">
+  <h2 class="center-text animate__animated animate__fadeInUp">代表者挨拶</h2>
+  <div class="representative-section animate__animated animate__fadeInUp">
+    <div class="representative-image">
+      <img src="images/daihyou.jpg" alt="代表者写真" />
+    </div>
+    <div class="representative-text">
+      <p>
+        皆さま、はじめまして。OcearyaGroup代表の永和（とわ）です。<br />
+        私たちのグループは、「創る力を、次の波へ。」という理念のもと、<br />
+        年齢や経験に関係なく、誰もが自分の才能を発揮し世界の"伝える"を一緒に作り上げていく存在を目指しております。<br />
+        好きなことを仕事にし、年齢や、関係なく能力のみを評価し、<br />
+        隠れている人材を見つけ出しその能力を発揮する、そんな環境づくりをこれからも続けていきます。<br />
+        成果報酬型という方式を採用しており、年齢関係なくみんなで仕事できる環境を作っておりますのでぜひ応募してくださいね！<br />
+        OcearyaGroupのこれからに、ぜひご期待ください。
+      </p>
+    </div>
   </div>
-  <div class="representative-text">
-    <p>
-      皆さま、はじめまして。OcearyaGroup代表の永和（とわ）です。<br>
-      私たちのグループは、「創る力を、次の波へ。」という理念のもと、<br>
-      年齢や経験に関係なく、誰もが自分の才能を発揮し世界の"伝える"を一緒に作り上げていく存在を目指しております。<br>
-      好きなことを仕事にし、年齢や、関係なく能力のみを評価し、<br>
-      隠れている人材を見つけ出しその能力を発揮する、そんな環境づくりをこれからも続けていきます。<br>
-      成果報酬型という方式を採用しており、年齢関係なくみんなで仕事できる環境を作っておりますのでぜひ応募してくださいね！<br>
-      OcearyaGroupのこれからに、ぜひご期待ください。
-    </p>
-  </div>
-</div>
-
 </section>
 
 <footer class="site-footer">
   <div class="footer-top">
     <div class="footer-left">
-      <img src="../ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo">
+      <img src="../ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo" />
     </div>
 
     <div class="footer-links">
@@ -172,9 +177,47 @@
   </div>
 </footer>
 
+<script>
+  // スライドショー制御
+  let slideIndex = 0;
+  const slides = document.querySelectorAll(".mySlides");
+  const totalSlides = slides.length;
 
-<script src="js/script.js"></script>
-<script src="js/animation.js"></script>
+  function showSlide(newIndex) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active", "prev-slide");
+      if (i === newIndex) {
+        slide.classList.add("active");
+      } else if (i === slideIndex) {
+        slide.classList.add("prev-slide");
+      }
+    });
+    slideIndex = newIndex;
+  }
+
+  function plusSlides(n) {
+    let newIndex = (slideIndex + n + totalSlides) % totalSlides;
+    showSlide(newIndex);
+  }
+
+  // 初期表示
+  showSlide(slideIndex);
+
+  // 自動スライド（5秒ごと）
+  setInterval(() => {
+    plusSlides(1);
+  }, 5000);
+
+  // ハンバーガーメニュー制御
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+
+    toggle.addEventListener("click", function () {
+      nav.classList.toggle("active");
+    });
+  });
+</script>
 
 </body>
 </html>
