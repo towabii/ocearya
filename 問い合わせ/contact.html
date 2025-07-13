@@ -1,66 +1,172 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>問い合わせフォーム | Ocearya Group</title>
+  <link rel="icon" href="../ロゴ/ロゴ.png" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
+      background-color: #000;
+      color: #fff;
       margin: 0;
+      padding: 20px;
     }
+
     header {
-      background: white;
-      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.9);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
-    header .logo img {
+
+    .logo img {
       height: 40px;
     }
+
     nav ul {
       list-style: none;
       display: flex;
       padding: 0;
       margin: 0;
     }
+
     nav ul li {
       margin-left: 20px;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #333;
+      color: #fff;
       font-weight: bold;
+      font-size: 16px;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    main {
+      padding-top: 100px;
+    }
+
     form {
-      background: white;
+      background: #111;
       padding: 20px;
       border-radius: 8px;
-      max-width: 500px;
+      max-width: 600px;
       margin: 30px auto;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     }
+
     input, textarea, select, button {
       width: 100%;
       margin-bottom: 15px;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: 5px;
+      background: #222;
+      color: #fff;
+      font-size: 1rem;
     }
+
     button {
       background-color: #3498db;
       color: white;
       border: none;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #2980b9;
     }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .footer-left img {
+      height: 40px;
+    }
+
+    .footer-links ul,
+    .footer-social ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li,
+    .footer-social ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a,
+    .footer-social a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      header {
+        flex-wrap: wrap;
+      }
+    }
   </style>
-  <link rel="icon" href="../ロゴ/ロゴ.png">
 </head>
 <body>
 
@@ -68,6 +174,7 @@
   <div class="logo">
     <img src="images/sample01.jpg" alt="Ocearyaロゴ">
   </div>
+  <button class="menu-toggle" aria-label="メニュー切替">&#9776;</button>
   <nav>
     <ul>
       <li><a href="../index.html">ホーム</a></li>
@@ -81,24 +188,25 @@
   </nav>
 </header>
 
-<h2 style="text-align:center;">Ocearya Group 問い合わせフォーム</h2>
-<h3 style="text-align:center;">こちらからお気軽にご連絡ください。</h3>
+<main>
+  <h2>Ocearya Group 問い合わせフォーム</h2>
+  <h3>こちらからお気軽にご連絡ください。</h3>
 
-<!-- GAS に直接送信 -->
-<form action="https://script.google.com/macros/s/AKfycbzP4TGsdq9tJHObw6jIl7gv6neEupo6vmcnWE3tOhp__gFfxAJ7wxdM9YReAt4oNu5i/exec" method="POST">
-  <input type="text" name="名前" placeholder="お名前（ニックネームでもOK）" required><br>
-  <input type="text" name="連絡先" placeholder="連絡先（Discord IDまたはメールアドレス）" required><br>
-  <select name="問い合わせ種別" required>
-    <option value="">問い合わせ種別を選択してください</option>
-    <option value="Ocearya全体について">Ocearya全体について</option>
-    <option value="所属タレントについて">所属タレントについて</option>
-    <option value="技術サポート">技術サポート</option>
-    <option value="その他">その他</option>
-  </select><br>
-  <textarea name="問い合わせ内容" placeholder="お問い合わせ内容を詳しくご記入ください" required></textarea><br>
-  <input type="text" name="添付資料URL" placeholder="添付資料URL（任意）"><br>
-  <button type="submit">送信</button>
-</form>
+  <form action="https://script.google.com/macros/s/AKfycbzP4TGsdq9tJHObw6jIl7gv6neEupo6vmcnWE3tOhp__gFfxAJ7wxdM9YReAt4oNu5i/exec" method="POST">
+    <input type="text" name="名前" placeholder="お名前（ニックネームでもOK）" required><br>
+    <input type="text" name="連絡先" placeholder="連絡先（Discord IDまたはメールアドレス）" required><br>
+    <select name="問い合わせ種別" required>
+      <option value="">問い合わせ種別を選択してください</option>
+      <option value="Ocearya全体について">Ocearya全体について</option>
+      <option value="所属タレントについて">所属タレントについて</option>
+      <option value="技術サポート">技術サポート</option>
+      <option value="その他">その他</option>
+    </select><br>
+    <textarea name="問い合わせ内容" placeholder="お問い合わせ内容を詳しくご記入ください" required></textarea><br>
+    <input type="text" name="添付資料URL" placeholder="添付資料URL（任意）"><br>
+    <button type="submit">送信</button>
+  </form>
+</main>
 
 <footer class="site-footer">
   <div class="footer-top">
@@ -128,6 +236,14 @@
     <p>© 2025 OcearyaGroup</p>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
