@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRIVACY POLICY | Ocearya Group</title>
+  
+  <link rel="icon" href="../ロゴ/ロゴ.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------------------------------- */
+    /* 1. 基本設定とリセット (共通) */
+    /* ---------------------------------- */
+    :root {
+      --bg-color: #0d1117; --text-color: #e6edf3; --primary-color: #3498db;
+      --primary-hover: #5dade2; --header-bg: rgba(13, 17, 23, 0.8);
+      --card-bg: #161b22; --border-color: #30363d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-color);
+      color: var(--text-color); overflow-x: hidden;
+    }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: var(--primary-hover); }
+
+    /* ---------------------------------- */
+    /* 2. ヘッダー & フッター (共通) */
+    /* ---------------------------------- */
+    .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 4%; background-color: var(--header-bg); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; }
+    .logo img { height: 45px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin: 0 15px; }
+    .nav-links a { color: var(--text-color); font-weight: bold; font-family: 'Montserrat', sans-serif; }
+    .menu-toggle { display: none; font-size: 28px; background: none; border: none; color: var(--text-color); cursor: pointer; z-index: 1001; }
+    .site-footer { background-color: #000; padding: 50px 4%; color: #aaa; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .footer-logo { height: 50px; }
+    .footer-column h4 { font-family: 'Montserrat', sans-serif; color: #fff; margin-bottom: 20px; }
+    .footer-column ul { list-style: none; padding: 0; }
+    .footer-column ul li { margin-bottom: 10px; }
+    .footer-column ul a { color: #aaa; }
+    .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; }
+    
+    /* ---------------------------------- */
+    /* 3. ポリシーページ専用スタイル */
+    /* ---------------------------------- */
+    .page-header {
+      padding-top: 150px; padding-bottom: 80px; text-align: center;
+      background: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 0.9)), url('../images/sample02.png') no-repeat center center;
+      background-size: cover;
+    }
+    .page-header h1 { font-size: 3.5rem; font-family: 'Montserrat', sans-serif; }
+
+    .policy-main { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+    .policy-content { background-color: var(--card-bg); padding: 40px; border-radius: 10px; border: 1px solid var(--border-color); }
+    .policy-content h2 {
+        font-size: 1.5rem; font-family: 'Montserrat', sans-serif;
+        margin-top: 30px; margin-bottom: 15px; padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .policy-content h2:first-of-type { margin-top: 0; }
+    .policy-content p, .policy-content ul { font-size: 1rem; line-height: 1.8; color: #ccc; }
+    .policy-content ul { list-style-position: inside; padding-left: 1em; }
+    .policy-content li { margin-bottom: 10px; }
+    .policy-update-date { text-align: right; margin-top: 40px; color: #aaa; font-size: 0.9rem; }
+    
+    @media (max-width: 768px) {
+      .nav-links { display: none; } .menu-toggle { display: block; }
+      .page-header h1 { font-size: 2.8rem; }
+      .policy-content { padding: 25px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo"><a href="../index.html" title="ホーム"><img src="../ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" /></a></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">HOME</a></li>
+        <li><a href="../about/about.html">ABOUT</a></li>
+        <li><a href="../news/news.html">NEWS</a></li>
+        <li><a href="../依頼/依頼.html">REQUEST</a></li>
+        <li><a href="../タレント/talents.html">SERVICE</a></li>
+        <li><a href="../問い合わせ/contact.html">CONTACT</a></li>
+        <li><a href="../応募/応募.html">JOIN US</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
+  </header>
+
+  <main class="policy-main">
+    <section class="page-header">
+      <h1>PRIVACY POLICY</h1>
+    </section>
+
+    <div class="policy-content">
+      <p>OcearyaGroup（以下「当グループ」といいます。）は、当グループが提供するサービス（以下「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます。）を定めます。</p>
+
+      <h2>第1条（個人情報）</h2>
+      <p>「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、連絡先その他の記述等により特定の個人を識別できる情報を指します。</p>
+
+      <h2>第2条（個人情報の取得方法）</h2>
+      <p>当グループは、ユーザーがお問い合わせフォーム、依頼フォーム、または応募フォームを利用する際に、氏名、連絡先（メールアドレス、Discord IDなど）、その他の個人情報をお尋ねすることがあります。</p>
+
+      <h2>第3条（個人情報の利用目的）</h2>
+      <p>当グループが個人情報を収集・利用する目的は、以下のとおりです。</p>
+      <ul>
+        <li>本サービスの提供・運営のため</li>
+        <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
+        <li>依頼や応募に関する連絡、および選考プロセスを管理するため</li>
+        <li>メンテナンス、重要なお知らせなど必要に応じたご連絡のため</li>
+        <li>上記の利用目的に付随する目的</li>
+      </ul>
+
+      <h2>第4条（個人情報の管理）</h2>
+      <p>当グループは、取り扱う個人情報の漏えい、滅失またはき損の防止その他の個人情報の安全管理のために必要かつ適切な措置を講じます。</p>
+
+      <h2>第5条（個人情報の第三者提供）</h2>
+      <p>当グループは、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。</p>
+      <ul>
+        <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+        <li>法令に基づく場合</li>
+      </ul>
+      
+      <h2>第6条（個人情報の開示・訂正・削除）</h2>
+      <p>当グループは、本人から個人情報の開示、訂正、追加、削除、利用停止の請求があった場合、本人確認を行ったうえで、法令に従い速やかに対応いたします。ご希望の場合は、お問い合わせフォームよりご連絡ください。</p>
+
+      <h2>第7条（Cookieの使用について）</h2>
+      <p>本サービスは、ユーザーの利便性の向上やアクセス状況の把握のためにCookieを使用することがあります。Cookieを無効にすることで収集を拒否することができますので、お使いのブラウザの設定をご確認ください。</p>
+
+      <h2>第8条（免責事項）</h2>
+      <p>当グループのウェブサイトからリンクやバナーなどによって他のサイトに移動した場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</p>
+
+      <h2>第9条（プライバシーポリシーの変更）</h2>
+      <p>本ポリシーの内容は、法令その他本ポリシーに別段の定めのある事項を除いて、ユーザーに通知することなく、変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。</p>
+
+      <div class="policy-update-date">
+        <p>制定日：2025年4月29日</p>
+        <p>最終改定日：2025年9月15日</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column"><img src="../ロゴ/ロゴ.png" alt="Ocearya公式ロゴ" class="footer-logo" /></div>
+      <div class="footer-column"><h4>MENU</h4><ul><li><a href="../about/about.html">ABOUT</a></li><li><a href="../依頼/依頼.html">REQUEST</a></li></ul></div>
+      <div class="footer-column"><h4>LEGAL</h4><ul><li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li></ul></div>
+      <div class="footer-column"><h4>SOCIAL</h4><ul><li><a href="https://discord.gg/dmTYyaZH8j" target="_blank" rel="noopener noreferrer">Discord</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 OcearyaGroup</p></div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector("nav ul");
+      // ハンバーガーメニューの表示・非表示を切り替える
+      // （※このページにはハンバーガーボタンがないため、コードは念のため残しています）
+      if(menuToggle) {
+        menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+      }
+    });
+  </script>
+</body>
+</html>

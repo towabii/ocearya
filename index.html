@@ -5,161 +5,690 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO向けページ概要 -->
+  <!-- SEO向け情報（内容は元のまま） -->
   <meta
     name="description"
     content="OcearyaGroup（オセアリヤグループ）は、とわ（TOWA/底原永和）が運営するクリエイティブチーム。動画編集・イラスト制作・SNS運用代行など、品質重視かつ低価格で提供中。依頼は1週間以内に納品。ココナラ実績10万円超。"
   />
-
-  <!-- SEOキーワード --
-  <meta name="keywords" content="Ocearya, OcearyaGroup, オセアリヤ, オセアリア,推せアリア,オセアニア,おせありあ,おせありゃ,お背アリや, 小瀬アリや, 押せアリや, Oceannic, Ocean, 依頼, 動画編集, デザイン, 安い, 依頼安い, 底原永和, 永和, とわびー, とわ, TOWA, towa, クリエイティブ, テクノロジー, イラスト制作, 配信支援, SNS運用代行, SNS代行, 安い依頼, クオリティ重視, 成果報酬型, 柔軟な働き方, ココナラ出品, サムネイル制作, ロゴ制作, プログラミング依頼, 依頼受付中, 創る力, 次の波, 若い才能, 14歳クリエイター, 隠れた才能発掘, 年齢不問, フリーランスチーム, 表現の場, 短納期対応, 1週間納品, 実績10万円, タレント支援, オンライン制作チーム.中学生働く,小学生仕事,中学生仕事,中学生金稼ぎ,中学生,年齢関係ない仕事,働き方改革,中学生でもできる仕事,小学生でもできる仕事,小学生金稼ぎ,小学生働く" />
-
-  <!-- OGP -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ocearya Group - 公式サイト | とわ（TOWA）の動画編集・依頼受付中" />
   <meta
     property="og:description"
     content="イラスト・動画編集・SNS代行などを安く・早く提供。若い才能が集まる成果報酬型チーム『Ocearya Group』公式サイト。"
   />
-  <meta property="og:image" content="https://example.com/ロゴ/ロゴ.png" />
-  <meta property="og:url" content="https://example.com" />
-
-  <!-- Twitterカード -->
+  <meta property="og:image" content="ロゴ/ロゴ.png" />
+  <meta property="og:url" content="https://towabii.github.io/ocearya/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ocearya Group - 公式サイト | とわ（TOWA）による依頼チーム" />
-  <meta
-    name="twitter:description"
-    content="動画編集・イラスト制作・SNS運用を安く依頼できるOcearyaGroupの公式ページ。"
-  />
-  <meta name="twitter:image" content="https://example.com/ロゴ/ロゴ.png" />
 
   <!-- タイトル -->
   <title>Ocearya Group - 公式サイト | 動画編集・イラスト制作・SNS代行チーム</title>
 
-  <!-- スタイルとファビコン -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- ファビコン -->
   <link rel="icon" href="ロゴ/ロゴ.png" />
+
+  <!-- Google Fontsの読み込み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（HTML内に統合） -->
+  <style>
+    /* ---------------------------------- */
+    /* 1. 基本設定とリセット */
+    /* ---------------------------------- */
+    :root {
+      --bg-color: #0d1117; /* 背景色 */
+      --text-color: #e6edf3; /* テキスト色 */
+      --primary-color: #3498db; /* メインカラー */
+      --primary-hover: #5dade2; /* ホバー時のメインカラー */
+      --header-bg: rgba(13, 17, 23, 0.8); /* ヘッダー背景 */
+      --card-bg: #161b22; /* カード背景 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden; /* 横スクロールを防止 */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: middle;
+      image-rendering: -webkit-optimize-contrast; /* 画像をシャープに表示 */
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--primary-hover);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ---------------------------------- */
+    /* 2. ヘッダー */
+    /* ---------------------------------- */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 4%;
+      background-color: var(--header-bg);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    .header-scrolled {
+      background-color: rgba(13, 17, 23, 0.95);
+    }
+    
+    .logo img {
+      height: 45px;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      font-weight: bold;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none; /* PCでは非表示 */
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* ---------------------------------- */
+    /* 3. メインビジュアル (Hero) */
+    /* ---------------------------------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4);
+      transform: scale(1.1);
+      animation: zoom-in-out 20s infinite alternate;
+    }
+
+    @keyframes zoom-in-out {
+      0% { transform: scale(1.1); }
+      100% { transform: scale(1.2); }
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      animation: fade-in-up 1s ease-out;
+    }
+    
+    .hero-text h1 {
+      font-size: 4rem;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* ---------------------------------- */
+    /* 4. セクション共通スタイル */
+    /* ---------------------------------- */
+    .section {
+      padding: 100px 4%;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .section-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      text-align: left;
+      margin-top: 60px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* 奇数セクションの画像は右側 */
+    .section:nth-of-type(odd) .section-content {
+      direction: rtl; /* 要素の並びを右から左へ */
+    }
+    .section:nth-of-type(odd) .section-content > * {
+      direction: ltr; /* テキストの方向は左から右へ戻す */
+    }
+
+    .section-image {
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .section-text p {
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 35px;
+      background-color: var(--primary-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-3px);
+      color: #fff;
+    }
+
+    /* ---------------------------------- */
+    /* 5. 各セクションの個別スタイル */
+    /* ---------------------------------- */
+
+    /* スライドショー */
+    #services {
+        background-color: var(--card-bg);
+    }
+
+    .slideshow-container {
+      position: relative;
+      margin: 60px auto 0;
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    .slide-nav button {
+      background-color: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      transition: background-color 0.3s ease;
+    }
+    .slide-nav button:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+    
+    /* ---------------------------------- */
+    /* 6. フッター */
+    /* ---------------------------------- */
+    .site-footer {
+      background-color: #000;
+      padding: 50px 4%;
+      color: #aaa;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+    
+    .footer-logo {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    .footer-column ul a {
+      color: #aaa;
+    }
+    .footer-column ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      font-size: 14px;
+    }
+
+    /* ---------------------------------- */
+    /* 7. スクロールアニメーション */
+    /* ---------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* ---------------------------------- */
+    /* 8. レスポンシブ対応 (スマホ) */
+    /* ---------------------------------- */
+    @media (max-width: 768px) {
+      /* ヘッダー */
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .nav-links li {
+        margin: 20px 0;
+      }
+      .nav-links a {
+        font-size: 24px;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Hero */
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      .hero-text p {
+        font-size: 1.2rem;
+      }
+      
+      /* セクション */
+      .section {
+        padding: 80px 5%;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .section-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      /* セクションの画像配置を常に上にする */
+      .section:nth-of-type(odd) .section-content {
+        direction: ltr;
+      }
+      .section-image {
+        grid-row: 1; /* 画像を常に一番上に配置 */
+      }
+      .section-text {
+        margin-top: 30px;
+      }
+    }
+    
+    /* ---------------------------------- */
+    /* 9. アニメーションキーフレーム */
+    /* ---------------------------------- */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
 </head>
 
 <body>
-  <header>
+  <!-- ヘッダー -->
+  <header class="header">
     <div class="logo">
-      <img src="ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" />
+      <a href="index.html" title="ホーム"><img src="ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" /></a>
     </div>
-
-    <!-- ここにハンバーガーメニューのボタン追加 -->
-    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
 
     <nav>
-      <ul>
-        <li><a href="index.html" title="ホーム">ホーム</a></li>
-        <li><a href="about/about.html" title="Ocearya Groupの概要">ＡＢＯＵＴ</a></li>
-        <li><a href="news/news.html" title="最新のニュース">お知らせ</a></li>
-        <li><a href="依頼/依頼.html" title="依頼フォーム">依頼</a></li>
-        <li><a href="タレント/talents.html" title="出品サービスを見る">出品サービス</a></li>
-        <li><a href="問い合わせ/contact.html" title="お問い合わせフォーム">問い合わせ</a></li>
-        <li><a href="応募/応募.html" title="応募フォーム">応募</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html" title="ホーム">HOME</a></li>
+        <li><a href="about/about.html" title="Ocearya Groupの概要">ABOUT</a></li>
+        <li><a href="news/news.html" title="最新のニュース">NEWS</a></li>
+        <li><a href="依頼/依頼.html" title="依頼フォーム">REQUEST</a></li>
+        <li><a href="タレント/talents.html" title="出品サービスを見る">SERVICE</a></li>
+        <li><a href="問い合わせ/contact.html" title="お問い合わせフォーム">CONTACT</a></li>
+        <li><a href="応募/応募.html" title="応募フォーム">JOIN US</a></li>
       </ul>
     </nav>
+    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
   </header>
 
-  <!-- メインビジュアル -->
-  <section class="hero">
-    <img src="images/sample02.png" alt="Ocearya Group メインビジュアル" class="main-photo" />
-    <div class="hero-text">
-      <h1>創る力を、次の波へ。</h1>
-      <p>Ocearya Group公式サイトへようこそ。</p>
-    </div>
-  </section>
+  <main>
+    <!-- メインビジュアル -->
+    <section class="hero">
+      <img src="images/sample02.png" alt="Ocearya Group メインビジュアル" class="hero-background" />
+      <div class="hero-text">
+        <h1>創る力を、次の波へ。</h1>
+        <p>Ocearya Group公式サイトへようこそ。</p>
+      </div>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="section-title">ABOUT</div>
-    <a href="about/about.html" class="section-button">詳しく見る</a>
-    <img src="images/sample03.png" alt="Ocearyaの概要紹介" class="section-image" />
-  </section>
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <h2 class="section-title">ABOUT</h2>
+      <div class="section-content">
+        <div class="section-image-container">
+          <img src="images/sample03.png" alt="Ocearyaの概要紹介" class="section-image" />
+        </div>
+        <div class="section-text">
+          <p>Ocearya Groupは、若い才能が集まり、創造性を最大限に発揮するクリエイティブチームです。動画編集、イラスト制作、SNS運用代行など、高品質なサービスを迅速かつ低価格で提供します。</p>
+          <a href="about/about.html" class="btn">詳しく見る</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- NEWS -->
-  <section id="news" class="section">
-    <div class="section-title">お知らせ</div>
-    <a href="news/news.html" class="section-button">お知らせ一覧</a>
-    <img src="images/sample04.png" alt="Ocearyaからのお知らせ" class="section-image" />
-  </section>
-
-  <!-- 依頼 -->
-  <section id="talents" class="section">
-    <div class="section-title">依頼フォーム</div>
-    <a href="依頼/依頼.html" class="section-button">依頼する</a>
-
-    <!-- TALENTS -->
-    <section id="talents" class="section">
-      <div class="section-title">出品サービス</div>
-      <a href="タレント/talents.html" class="section-button">サービスを見る</a>
-      <img src="images/sample05.png" alt="サービススライド" class="section-image" />
-
-      <!-- スライドショー -->
+    <!-- NEWS -->
+    <section id="news" class="section reveal">
+      <h2 class="section-title">NEWS</h2>
+      <div class="section-content">
+        <div class="section-image-container">
+          <img src="images/sample04.png" alt="Ocearyaからのお知らせ" class="section-image" />
+        </div>
+        <div class="section-text">
+          <p>チームの最新情報や活動報告、新しいサービスのリリースなどをお知らせします。私たちの挑戦と成長の軌跡をぜひご覧ください。</p>
+          <a href="news/news.html" class="btn">お知らせ一覧</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SERVICES -->
+    <section id="services" class="section reveal">
+      <h2 class="section-title">OUR SERVICES</h2>
+      <p style="max-width: 800px; margin: 20px auto 0;">私たちは動画編集からロゴ制作まで、幅広いクリエイティブサービスを提供しています。</p>
       <div class="slideshow-container">
-        <div class="slide"><img src="images/slide/slide1.jpg" alt="スライド1" /></div>
-        <div class="slide"><img src="images/slide/slide2.jpg" alt="スライド2" /></div>
-        <div class="slide"><img src="images/slide/slide3.jpg" alt="スライド3" /></div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="slide active"><img src="images/slide/slide1.jpg" alt="スライド1: 動画編集" /></div>
+        <div class="slide"><img src="images/slide/slide2.jpg" alt="スライド2: イラスト制作" /></div>
+        <div class="slide"><img src="images/slide/slide3.jpg" alt="スライド3: SNS運用" /></div>
+        
+        <div class="slide-nav">
+          <button class="prev" aria-label="前のスライドへ">&#10094;</button>
+          <button class="next" aria-label="次のスライドへ">&#10095;</button>
+        </div>
+      </div>
+       <div style="margin-top: 40px;">
+         <a href="タレント/talents.html" class="btn">サービスを見る</a>
+         <a href="依頼/依頼.html" class="btn" style="margin-left: 20px;">依頼する</a>
       </div>
     </section>
-
+    
     <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="section-title">問い合わせ</div>
-      <a href="問い合わせ/contact.html" class="section-button">問い合わせフォームへ</a>
-      <img src="images/sample06.png" alt="問い合わせ用写真" class="section-image" />
+    <section id="contact" class="section reveal">
+      <h2 class="section-title">CONTACT</h2>
+      <div class="section-content">
+        <div class="section-image-container">
+          <img src="images/sample06.png" alt="問い合わせ用写真" class="section-image" />
+        </div>
+        <div class="section-text">
+          <p>ご依頼の相談、サービスに関するご質問、またはチームへの参加希望など、お気軽にお問い合わせください。あなたの「創りたい」を形にするお手伝いをします。</p>
+          <a href="問い合わせ/contact.html" class="btn">問い合わせフォームへ</a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- フッター -->
-    <footer class="site-footer">
-      <div class="footer-top">
-        <div class="footer-left">
-          <img src="ロゴ/ロゴ.png" alt="Ocearya公式ロゴ" class="footer-logo" width="100" />
-        </div>
-
-        <div class="footer-links">
-          <ul>
-            <li><a href="about/about.html">ABOUT</a></li>
-            <li><a href="問い合わせ/contact.html">問い合わせ</a></li>
-            <li><a href="応募/応募.html">応募</a></li>
-            <li><a href="プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-social">
-          <ul>
-            <li>
-              <a
-                href="https://discord.gg/dmTYyaZH8j"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Discord</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q"
-                target="_blank"
-                rel="noopener noreferrer"
-                >YouTube</a
-              >
-            </li>
-            <li><a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
-            <li><a href="https://lin.ee/y6uf9zR" target="_blank" rel="noopener noreferrer">LINE</a></li>
-          </ul>
-        </div>
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="ロゴ/ロゴ.png" alt="Ocearya公式ロゴ" class="footer-logo" />
+        <p>&copy; 2025 OcearyaGroup</p>
       </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 OcearyaGroup</p>
+      <div class="footer-column">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="about/about.html">ABOUT</a></li>
+          <li><a href="依頼/依頼.html">REQUEST</a></li>
+          <li><a href="問い合わせ/contact.html">CONTACT</a></li>
+          <li><a href="応募/応募.html">JOIN US</a></li>
+        </ul>
       </div>
-    </footer>
+      <div class="footer-column">
+        <h4>LEGAL</h4>
+        <ul>
+          <li><a href="プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>SOCIAL</h4>
+        <ul>
+          <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank" rel="noopener noreferrer">Discord</a></li>
+          <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li><a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+          <li><a href="https://lin.ee/y6uf9zR" target="_blank" rel="noopener noreferrer">LINE</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Ocearya Group - Creative team by TOWA</p>
+    </div>
+  </footer>
 
-    <script src="js/script.js" defer></script>
+  <!-- JavaScript (HTML内に統合) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      // --- ハンバーガーメニュー ---
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // --- ヘッダーのスクロール効果 ---
+      const header = document.querySelector('.header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
+      });
+
+      // --- スライドショー ---
+      const slides = document.querySelectorAll(".slide");
+      const nextBtn = document.querySelector(".next");
+      const prevBtn = document.querySelector(".prev");
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove("active");
+          if (i === index) {
+            slide.classList.add("active");
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      }
+      
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+      }
+
+      nextBtn.addEventListener("click", nextSlide);
+      prevBtn.addEventListener("click", prevSlide);
+
+      // 5秒ごとに自動でスライド
+      setInterval(nextSlide, 5000);
+      
+      showSlide(currentIndex);
+
+      // --- スクロールアニメーション ---
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // 一度表示したら監視を解除
+          }
+        });
+      }, {
+        threshold: 0.1 // 10%表示されたら実行
+      });
+
+      revealElements.forEach(el => {
+        observer.observe(el);
+      });
+
+    });
+  </script>
 </body>
 
 </html>

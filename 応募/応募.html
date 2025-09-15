@@ -1,311 +1,371 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ocearya Group 応募フォーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOIN US | Ocearya Group</title>
+  
+  <!-- ファビコン -->
   <link rel="icon" href="../ロゴ/ロゴ.png" />
+
+  <!-- Google Fontsの読み込み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS（HTML内に統合） -->
   <style>
+    /* ---------------------------------- */
+    /* 1. 基本設定とリセット (共通) */
+    /* ---------------------------------- */
+    :root {
+      --bg-color: #0d1117;
+      --text-color: #e6edf3;
+      --primary-color: #3498db;
+      --primary-hover: #5dade2;
+      --header-bg: rgba(13, 17, 23, 0.8);
+      --card-bg: #161b22;
+      --input-bg: #0d1117;
+      --border-color: #30363d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 20px;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
     }
+    img { max-width: 100%; height: auto; vertical-align: middle; }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: var(--primary-hover); }
+    ul { list-style: none; }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: rgba(0, 0, 0, 0.9);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
+    /* ---------------------------------- */
+    /* 2. ヘッダー & フッター (共通) */
+    /* ---------------------------------- */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 4%; background-color: var(--header-bg);
+      backdrop-filter: blur(10px); position: fixed; width: 100%;
+      top: 0; z-index: 1000; transition: background-color 0.3s ease;
     }
-
-    .logo img {
-      height: 40px;
+    .header-scrolled { background-color: rgba(13, 17, 23, 0.95); }
+    .logo img { height: 45px; }
+    .nav-links { display: flex; }
+    .nav-links li { margin: 0 15px; }
+    .nav-links a {
+      color: var(--text-color); font-weight: bold; font-size: 16px;
+      font-family: 'Montserrat', sans-serif; position: relative; padding-bottom: 5px;
     }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      padding: 0;
-      margin: 0;
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background-color: var(--primary-color);
+      transition: width 0.3s ease;
     }
+    .nav-links a:hover::after { width: 100%; }
+    .menu-toggle { display: none; font-size: 28px; background: none; border: none; color: var(--text-color); cursor: pointer; z-index: 1001; }
+    
+    .site-footer { background-color: #000; padding: 50px 4%; color: #aaa; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .footer-logo { height: 50px; margin-bottom: 20px; }
+    .footer-column h4 { font-family: 'Montserrat', sans-serif; color: #fff; margin-bottom: 20px; font-size: 18px; }
+    .footer-column ul li { margin-bottom: 10px; }
+    .footer-column ul a { color: #aaa; }
+    .footer-column ul a:hover { color: #fff; }
+    .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; font-size: 14px; }
 
-    nav ul li {
-      margin-left: 20px;
+    /* ---------------------------------- */
+    /* 3. 応募ページ専用スタイル */
+    /* ---------------------------------- */
+    .page-header {
+      padding-top: 150px; padding-bottom: 80px; text-align: center;
+      background: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 1)), url('../images/sample03.png') no-repeat center center;
+      background-size: cover;
     }
+    .page-header h1 { font-size: 3.5rem; font-family: 'Montserrat', sans-serif; animation: fade-in-up 1s ease-out; }
 
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
+    .join-section { padding: 80px 4%; max-width: 800px; margin: 0 auto; }
+    .form-intro { text-align: center; margin-bottom: 50px; }
+    .form-intro h2 { font-size: 2rem; font-family: 'Montserrat', sans-serif; margin-bottom: 15px; }
+    .form-intro p { font-size: 1.1rem; color: #aaa; }
+    
+    .join-form { background-color: var(--card-bg); padding: 20px; border-radius: 10px; border: 1px solid var(--border-color); }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #ccc; }
+    .form-control {
+      width: 100%; padding: 12px 15px; border: 1px solid var(--border-color);
+      border-radius: 6px; background-color: var(--input-bg);
+      color: var(--text-color); font-size: 1rem; font-family: 'Noto Sans JP', sans-serif;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
+    .form-control:focus {
+      outline: none; border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
     }
-
-    main {
-      padding-top: 120px;
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    
+    .submit-btn {
+      display: inline-block; width: 100%; padding: 12px 35px; background-color: var(--primary-color);
+      color: #fff; text-decoration: none; border-radius: 50px; border: none; font-size: 18px;
+      font-weight: bold; cursor: pointer; transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
     }
+    .submit-btn:hover { background-color: var(--primary-hover); transform: translateY(-3px); }
+    
+    .note { padding: 10px; margin-top: -10px; margin-bottom: 15px; background-color: rgba(220, 160, 60, 0.1); border-left: 3px solid #dca03c; color: #dca03c; font-size: 0.9rem; }
 
-    form {
-      background: #111;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 600px;
-      margin: 30px auto;
-      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    /* ★ アコーディオン スタイル */
+    .accordion-section { border-bottom: 1px solid var(--border-color); }
+    .accordion-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px; cursor: pointer;
     }
-
-    input, textarea, select, button {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #555;
-      border-radius: 5px;
-      background: #222;
-      color: #fff;
-      font-size: 1rem;
+    .accordion-header h4 { font-size: 1.2rem; margin: 0; font-family: 'Montserrat', sans-serif; }
+    .accordion-header .icon { font-size: 1.5rem; transition: transform 0.3s ease; }
+    .accordion-content {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+      padding: 0 20px;
     }
-
-    button {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      cursor: pointer;
+    .accordion-section.active .accordion-content {
+      max-height: 2000px; /* 十分な高さを確保 */
+      padding: 10px 20px 20px;
     }
+    .accordion-section.active .icon { transform: rotate(45deg); }
 
-    button:hover {
-      background-color: #2980b9;
-    }
-
-    h2, h3 {
-      text-align: center;
-    }
-
-    .note {
-      font-size: 0.9rem;
-      color: #f88;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-
-    .footer-top {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 20px;
-    }
-
-    .footer-left img {
-      height: 40px;
-    }
-
-    .footer-links ul,
-    .footer-social ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links ul li,
-    .footer-social ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-links a,
-    .footer-social a {
-      color: #fff;
-      text-decoration: none;
-    }
-
+    /* ---------------------------------- */
+    /* 4. レスポンシブ対応 */
+    /* ---------------------------------- */
     @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.95);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 10px 0;
+      .nav-links {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        background-color: var(--bg-color); flex-direction: column;
+        justify-content: center; align-items: center;
+        transform: translateX(100%); transition: transform 0.4s ease-in-out;
       }
-
-      nav.active {
-        display: flex;
-      }
-
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      header {
-        flex-wrap: wrap;
-      }
+      .nav-links.active { transform: translateX(0); }
+      .nav-links li { margin: 20px 0; }
+      .nav-links a { font-size: 24px; }
+      .menu-toggle { display: block; }
+      .page-header h1 { font-size: 2.8rem; }
+      .join-form { padding: 10px; }
+      .accordion-header { padding: 15px; }
+    }
+    
+    /* ---------------------------------- */
+    /* 5. アニメーションキーフレーム */
+    /* ---------------------------------- */
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
-
-<header>
-  <div class="logo">
-    <img src="images/sample01.jpg" alt="Ocearyaロゴ" />
-  </div>
-  <button class="menu-toggle" aria-label="メニュー切替">&#9776;</button>
-  <nav>
-    <ul>
-      <li><a href="../index.html">ホーム</a></li>
-      <li><a href="../about/about.html">ＡＢＯＵＴ</a></li>
-      <li><a href="../news/news.html">ニュース</a></li>
-      <li><a href="../依頼/依頼.html">依頼</a></li>
-      <li><a href="../タレント/talents.html">出品サービス</a></li>
-      <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
-      <li><a href="../応募/応募.html">応募</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-  <h2>Ocearya Group 応募フォーム</h2>
-  <h3>このフォームは、OcearyaGroupの管理課のみに送られます。</h3>
-
-  <!-- 以下、フォームそのまま -->
-  <form action="https://script.google.com/macros/s/AKfycbzdOflZhd0F2PZ87xzMEr7nzZ8SRQDd7BKqv2qe88MT/dev" method="POST">
-    <input type="text" name="氏名" placeholder="氏名（活動名でもOK）" required />
-    <input type="text" name="本名" placeholder="本名" />
-    <input type="date" name="生年月日" required />
-    <input type="number" name="年齢" placeholder="年齢" required />
-    <input type="email" name="メールアドレス" placeholder="メールアドレス（任意）" />
-    <input type="text" name="連絡先" placeholder="電話番号 または Discord ID または LINEの名前（公式LINE登録者のみ）" required />
-    <p class="note">※LINEの名前を記入する場合は、必ず公式LINEに「72377897」という番号を送信してください。</p>
-    <input type="text" name="居住地域" placeholder="居住地域（都道府県だけでOK）" required />
-
-    <h3>【学歴・経歴】</h3>
-    <input type="text" name="学歴・職業" placeholder="現在の学年／職業" required />
-    <textarea name="過去の活動歴" placeholder="過去の活動歴（所属していた団体、プロジェクトなど）"></textarea>
-    <textarea name="受賞歴・実績" placeholder="特筆すべき受賞歴・実績（あれば）"></textarea>
-
-    <h3>【希望部門・役割】</h3>
-    <select name="応募希望部門" required>
-      <option value="一般部門">一般部門</option>
-    </select>
-    <textarea name="具体的にやりたいこと" placeholder="具体的にやりたいこと・希望ポジション"></textarea>
-
-    <h3>【スキル・経験】</h3>
-    <textarea name="扱えるツール・ソフト" placeholder="扱えるツール・ソフト（例：Photoshop、Premiere Pro、Blender、Minecraftプラグイン開発など）"></textarea>
-    <textarea name="得意な作業・分野" placeholder="得意な作業・分野"></textarea>
-    <textarea name="制作物" placeholder="これまでに制作したもの（URL・ポートフォリオ添付可）"></textarea>
-
-    <h3>【活動可能時間(急な仕事の連絡用)】</h3>
-    <input type="text" name="活動可能時間" placeholder="1週間の活動可能時間（例：平日○時間、休日○時間）" required />
-    <input type="text" name="活動可能時間帯" placeholder="活動可能な時間帯（例：夜20時〜23時）" required />
-    <select name="長期間参加可能" required>
-      <option value="" disabled selected>長期間参加可能か選択してください</option>
-      <option value="はい">長期間参加可能（半年以上）</option>
-      <option value="いいえ">長期間参加不可</option>
-      <option value="一時派遣">臨時作業員</option>
-    </select>
-
-    <h3>【参加にあたって】</h3>
-    <select name="同意" required>
-      <option value="" disabled selected>同意の有無を選択してください</option>
-      <option value="はい">OcearyaGroupの「無報酬または成果報酬型」活動スタイルに納得しています</option>
-      <option value="いいえ">納得していません</option>
-    </select>
-    <select name="保護者同意" required>
-      <option value="" disabled selected>保護者同意の状態を選択してください</option>
-      <option value="対象外">対象外（14歳以上の方）</option>
-      <option value="はい">保護者同意あり</option>
-      <option value="いいえ">保護者同意なし</option>
-    </select>
-
-    <h3>【面接希望日（3候補まで）】</h3>
-    <input type="date" name="面接希望日1" />
-    <input type="date" name="面接希望日2" />
-    <input type="date" name="面接希望日3" />
-
-    <h3>【面接希望時間帯】</h3>
-    <select name="面接希望時間帯" required>
-      <option value="" disabled selected>希望の時間帯を選択してください</option>
-      <option value="平日 18:30〜19:30">平日 18:30〜19:30</option>
-      <option value="平日 19:30〜20:30">平日 19:30〜20:30</option>
-      <option value="平日 20:30〜21:30">平日 20:30〜21:30</option>
-      <option value="休日 10:00〜11:00">休日 10:00〜11:00</option>
-      <option value="休日 11:00〜12:00">休日 11:00〜12:00</option>
-      <option value="休日 13:00〜14:00">休日 13:00〜14:00</option>
-    </select>
-
-    <h3>【自己PR・その他】</h3>
-    <textarea name="自己PR" placeholder="自己PR（得意なこと、アピールポイント）"></textarea>
-    <textarea name="活動意気込み" placeholder="活動に対する意気込みや、将来やりたいことなど"></textarea>
-    <textarea name="質問要望" placeholder="質問・運営への要望（あれば）"></textarea>
-
-    <button type="submit">送信</button>
-  </form>
-</main>
-
-<footer class="site-footer">
-  <div class="footer-top">
-    <div class="footer-left">
-      <img src="../ロゴ/ロゴ.png" alt="Ocearya ロゴ" class="footer-logo" />
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">
+      <a href="../index.html" title="ホーム"><img src="../ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" /></a>
     </div>
-    <div class="footer-links">
-      <ul>
+    <nav>
+      <ul class="nav-links">
         <li><a href="../index.html">HOME</a></li>
         <li><a href="../about/about.html">ABOUT</a></li>
-        <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
-        <li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
+        <li><a href="../news/news.html">NEWS</a></li>
+        <li><a href="../依頼/依頼.html">REQUEST</a></li>
+        <li><a href="../タレント/talents.html">SERVICE</a></li>
+        <li><a href="../問い合わせ/contact.html">CONTACT</a></li>
+        <li><a href="../応募/応募.html">JOIN US</a></li>
       </ul>
-    </div>
-    <div class="footer-social">
-      <ul>
-        <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank">Discord</a></li>
-        <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank">YouTube</a></li>
-        <li><a href="https://tiktok.com/" target="_blank">TikTok</a></li>
-        <li><a href="https://lin.ee/y6uf9zR" target="_blank">LINE</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 OcearyaGroup</p>
-  </div>
-</footer>
+    </nav>
+    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
+  </header>
 
-<script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('nav');
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
-</script>
+  <main>
+    <!-- ページヘッダー -->
+    <section class="page-header">
+      <h1>JOIN US</h1>
+    </section>
 
+    <!-- 応募フォームセクション -->
+    <section class="join-section">
+      <div class="form-intro">
+        <h2>応募フォーム</h2>
+        <p>あなたの「創る力」を、私たちと共に次の波へ。ご応募お待ちしています。</p>
+      </div>
+
+      <form action="https://script.google.com/macros/s/AKfycbzdOflZhd0F2PZ87xzMEr7nzZ8SRQDd7BKqv2qe88MT/dev" method="POST" class="join-form">
+        
+        <!-- 基本情報 -->
+        <div class="accordion-section active">
+          <div class="accordion-header">
+            <h4>基本情報</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="form-group"><label for="name">氏名（活動名でもOK）</label><input type="text" id="name" name="氏名" class="form-control" required /></div>
+            <div class="form-group"><label for="real-name">本名</label><input type="text" id="real-name" name="本名" class="form-control" /></div>
+            <div class="form-group"><label for="birth-date">生年月日</label><input type="date" id="birth-date" name="生年月日" class="form-control" required /></div>
+            <div class="form-group"><label for="age">年齢</label><input type="number" id="age" name="年齢" class="form-control" required /></div>
+            <div class="form-group"><label for="email">メールアドレス（任意）</label><input type="email" id="email" name="メールアドレス" class="form-control" /></div>
+            <div class="form-group"><label for="contact-info">連絡先（Discord IDなど）</label><input type="text" id="contact-info" name="連絡先" class="form-control" placeholder="電話番号、Discord ID、LINEの名前など" required /></div>
+            <p class="note">※LINEの名前を記入する場合は、必ず公式LINEに「72377897」という番号を送信してください。</p>
+            <div class="form-group"><label for="residence">居住地域（都道府県）</label><input type="text" id="residence" name="居住地域" class="form-control" placeholder="例：東京都" required /></div>
+          </div>
+        </div>
+
+        <!-- 学歴・経歴 -->
+        <div class="accordion-section">
+          <div class="accordion-header">
+            <h4>学歴・経歴</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="form-group"><label for="background">現在の学年／職業</label><input type="text" id="background" name="学歴・職業" class="form-control" required /></div>
+            <div class="form-group"><label for="history">過去の活動歴</label><textarea id="history" name="過去の活動歴" class="form-control" placeholder="所属していた団体、プロジェクトなど"></textarea></div>
+            <div class="form-group"><label for="achievements">受賞歴・実績</label><textarea id="achievements" name="受賞歴・実績" class="form-control" placeholder="特筆すべき受賞歴・実績（あれば）"></textarea></div>
+          </div>
+        </div>
+        
+        <!-- スキル・経験 -->
+        <div class="accordion-section">
+          <div class="accordion-header">
+            <h4>スキル・経験</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="form-group"><label for="tools">扱えるツール・ソフト</label><textarea id="tools" name="扱えるツール・ソフト" class="form-control" placeholder="例：Photoshop、Premiere Pro、Blenderなど"></textarea></div>
+            <div class="form-group"><label for="skills">得意な作業・分野</label><textarea id="skills" name="得意な作業・分野" class="form-control"></textarea></div>
+            <div class="form-group"><label for="portfolio">これまでの制作物（ポートフォリオURLなど）</label><textarea id="portfolio" name="制作物" class="form-control"></textarea></div>
+          </div>
+        </div>
+
+        <!-- 活動時間 -->
+        <div class="accordion-section">
+          <div class="accordion-header">
+            <h4>活動時間</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="form-group"><label for="available-hours">1週間の活動可能時間</label><input type="text" id="available-hours" name="活動可能時間" class="form-control" placeholder="例：平日10時間、休日8時間" required /></div>
+            <div class="form-group"><label for="available-timezone">活動可能な時間帯</label><input type="text" id="available-timezone" name="活動可能時間帯" class="form-control" placeholder="例：夜20時〜23時" required /></div>
+            <div class="form-group"><label for="duration">長期間参加可能か</label>
+                <select id="duration" name="長期間参加可能" class="form-control" required>
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="はい">長期間参加可能（半年以上）</option>
+                  <option value="いいえ">長期間参加不可</option>
+                  <option value="一時派遣">臨時作業員として参加希望</option>
+                </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 面接希望日 -->
+        <div class="accordion-section">
+          <div class="accordion-header">
+            <h4>面接希望日</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="form-group"><label for="interview-date1">第一希望日</label><input type="date" id="interview-date1" name="面接希望日1" class="form-control" /></div>
+            <div class="form-group"><label for="interview-date2">第二希望日</label><input type="date" id="interview-date2" name="面接希望日2" class="form-control" /></div>
+            <div class="form-group"><label for="interview-date3">第三希望日</label><input type="date" id="interview-date3" name="面接希望日3" class="form-control" /></div>
+            <div class="form-group"><label for="interview-time">希望の時間帯</label>
+                <select id="interview-time" name="面接希望時間帯" class="form-control" required>
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="平日 18:30〜19:30">平日 18:30〜19:30</option>
+                  <option value="平日 19:30〜20:30">平日 19:30〜20:30</option>
+                  <option value="平日 20:30〜21:30">平日 20:30〜21:30</option>
+                  <option value="休日 10:00〜11:00">休日 10:00〜11:00</option>
+                  <option value="休日 11:00〜12:00">休日 11:00〜12:00</option>
+                  <option value="休日 13:00〜14:00">休日 13:00〜14:00</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 自己PR -->
+        <div class="accordion-section">
+          <div class="accordion-header">
+            <h4>自己PR・その他</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+             <div class="form-group"><label for="self-pr">自己PR</label><textarea id="self-pr" name="自己PR" class="form-control" placeholder="得意なこと、アピールポイント"></textarea></div>
+             <div class="form-group"><label for="ambition">活動への意気込み</label><textarea id="ambition" name="活動意気込み" class="form-control" placeholder="活動に対する意気込みや、将来やりたいことなど"></textarea></div>
+             <div class="form-group"><label for="questions">質問・要望</label><textarea id="questions" name="質問要望" class="form-control" placeholder="質問・運営への要望（あれば）"></textarea></div>
+          </div>
+        </div>
+
+        <!-- 同意事項 -->
+        <div class="accordion-section">
+          <div class="accordion-header">
+            <h4>同意事項</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="form-group"><label for="agreement">活動スタイルへの同意</label>
+                <select id="agreement" name="同意" class="form-control" required>
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="はい">OcearyaGroupの「無報酬または成果報酬型」活動スタイルに納得しています</option>
+                  <option value="いいえ">納得していません</option>
+                </select>
+            </div>
+            <div class="form-group"><label for="parental-consent">保護者の同意（13歳以下の方）</label>
+                <select id="parental-consent" name="保護者同意" class="form-control" required>
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="対象外">対象外（14歳以上）</option>
+                  <option value="はい">保護者同意あり</option>
+                  <option value="いいえ">保護者同意なし</option>
+                </select>
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn" style="margin-top: 30px;">応募内容を送信する</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column"><img src="../ロゴ/ロゴ.png" alt="Ocearya公式ロゴ" class="footer-logo" /><p>&copy; 2025 OcearyaGroup</p></div>
+      <div class="footer-column"><h4>MENU</h4><ul><li><a href="../about/about.html">ABOUT</a></li><li><a href="../依頼/依頼.html">REQUEST</a></li><li><a href="../問い合わせ/contact.html">CONTACT</a></li><li><a href="../応募/応募.html">JOIN US</a></li></ul></div>
+      <div class="footer-column"><h4>LEGAL</h4><ul><li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li></ul></div>
+      <div class="footer-column"><h4>SOCIAL</h4><ul><li><a href="https://discord.gg/dmTYyaZH8j" target="_blank" rel="noopener noreferrer">Discord</a></li><li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank" rel="noopener noreferrer">YouTube</a></li><li><a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li><li><a href="https://lin.ee/y6uf9zR" target="_blank" rel="noopener noreferrer">LINE</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>Ocearya Group - Creative team by TOWA</p></div>
+  </footer>
+
+  <!-- JavaScript (HTML内に統合) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      // --- ハンバーガーメニュー ---
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+
+      // --- ヘッダーのスクロール効果 ---
+      const header = document.querySelector('.header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('header-scrolled', window.scrollY > 50);
+      });
+      
+      // --- ★ アコーディオン機能 ---
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+      accordionHeaders.forEach(header => {
+        header.addEventListener("click", function() {
+          const accordionSection = this.parentElement;
+          accordionSection.classList.toggle("active");
+        });
+      });
+    });
+  </script>
 </body>
 </html>

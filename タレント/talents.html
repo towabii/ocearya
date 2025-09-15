@@ -1,103 +1,184 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ocearya Group - 出品サービス</title>
-  <link rel="stylesheet" href="css/style.css"> <!-- NEWSと同じCSS -->
-<link rel="icon" href="../ロゴ/ロゴ.png">
-
-</head>
-<body>
-
-<header>
-  <div class="logo">
-    <img src="images/sample01.jpg" alt="Ocearyaロゴ">
-  </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SERVICES | Ocearya Group</title>
   
-<!-- ハンバーガーボタン -->
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <link rel="icon" href="../ロゴ/ロゴ.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
-  <nav id="main-nav">
-    <ul>
-      <li><a href="../index.html">ホーム</a></li>
-      <li><a href="../about/about.html">ＡＢＯＵＴ</a></li>
-      <li><a href="../news/news.html">お知らせ</a></li>
-      <li><a href="../依頼/依頼.html">依頼</a></li>
-      <li><a href="../タレント/talents.html">出品サービス</a></li>
-      <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
-      <li><a href="../応募/応募.html">応募</a></li>
-    </ul>
-  </nav>
-</header>
+  <style>
+    /* ---------------------------------- */
+    /* 1. 基本設定とリセット (共通) */
+    /* ---------------------------------- */
+    :root {
+      --bg-color: #0d1117; --text-color: #e6edf3; --primary-color: #3498db;
+      --primary-hover: #5dade2; --header-bg: rgba(13, 17, 23, 0.8);
+      --card-bg: #161b22; --border-color: #30363d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-color);
+      color: var(--text-color); overflow-x: hidden;
+    }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: var(--primary-hover); }
 
-<section class="news-section">
-  <div class="hero-text">
-    <h1>出品サービス</h1>
-    <h2>出品サービス一覧</h2>
-  </div>
+    /* ---------------------------------- */
+    /* 2. ヘッダー & フッター (共通) */
+    /* ---------------------------------- */
+    .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 4%; background-color: var(--header-bg); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; }
+    .logo img { height: 45px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin: 0 15px; }
+    .nav-links a { color: var(--text-color); font-weight: bold; font-family: 'Montserrat', sans-serif; }
+    .menu-toggle { display: none; font-size: 28px; background: none; border: none; color: var(--text-color); cursor: pointer; z-index: 1001; }
+    .site-footer { background-color: #000; padding: 50px 4%; color: #aaa; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .footer-logo { height: 50px; }
+    .footer-column h4 { font-family: 'Montserrat', sans-serif; color: #fff; margin-bottom: 20px; }
+    .footer-column ul { list-style: none; padding: 0; }
+    .footer-column ul li { margin-bottom: 10px; }
+    .footer-column ul a { color: #aaa; }
+    .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; }
+    
+    /* ---------------------------------- */
+    /* 3. サービス一覧ページ専用スタイル */
+    /* ---------------------------------- */
+    .page-header {
+      padding-top: 150px; padding-bottom: 80px; text-align: center;
+      background: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 1)), url('../images/sample05.png') no-repeat center center;
+      background-size: cover;
+    }
+    .page-header h1 { font-size: 3.5rem; font-family: 'Montserrat', sans-serif; }
+    
+    .service-section { padding: 80px 4%; max-width: 1200px; margin: 0 auto; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
-  <div class="news-list">
-    <!-- グループ1: みるすま -->
-    <a href="groups/mirusuma.html" class="news-item">
-      <img src="images/LOGO.png" alt="みるすま サムネイル">
-      <div class="news-content">
-        <p class="news-date">2025/04/29</p>
-        <h3 class="news-title">ロゴ作成</h3>
-        <p class="news-description">ココナラでロゴ作成を5000円から承っております</p>
-      </div>
-    </a>
+    .service-card {
+        background-color: var(--card-bg); border-radius: 10px; overflow: hidden;
+        color: var(--text-color); display: flex; flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .service-card-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .service-card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .service-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.9rem; }
+    .service-card-creator { background-color: #555; color: #fff; padding: 3px 10px; border-radius: 50px; font-size: 0.8rem; }
+    .service-card-price { background-color: var(--primary-color); color: #fff; padding: 3px 10px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
+    .service-card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; flex-grow: 1; }
+    .service-card-description { font-size: 0.95rem; line-height: 1.6; color: #ccc; }
+    
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
- <!-- グループ1: 動画編集-->
-    <a href="groups/mirusuma.html" class="news-item">
-      <img src="images/douga.png" alt="動画編集">
-      <div class="news-content">
-        <p class="news-date">2025/06/28</p>
-        <h3 class="news-title">動画編集</h3>
-        <p class="news-description">動画編集を3000円から承っております</p>
-      </div>
-    </a>
+    @media (max-width: 768px) {
+      .nav-links { display: none; /* 省略 */ } .menu-toggle { display: block; }
+      .page-header h1 { font-size: 2.8rem; }
+    }
+  </style>
+</head>
 
-    <!-- 他グループを追加する場合は以下にコピペして編集 -->
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="footer-top">
-    <div class="footer-left">
-      <img src="css/article.css" alt="Ocearya ロゴ" class="footer-logo">
-    </div>
-
-    <div class="footer-links">
-      <ul>
+<body>
+  <header class="header">
+    <div class="logo"><a href="../index.html" title="ホーム"><img src="../ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" /></a></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">HOME</a></li>
         <li><a href="../about/about.html">ABOUT</a></li>
-        <li><a href="../問い合わせ/contact.html">問い合わせ</a></li>
-        <li><a href="../応募/応募.html">応募</a></li>
-        <li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
+        <li><a href="../news/news.html">NEWS</a></li>
+        <li><a href="../依頼/依頼.html">REQUEST</a></li>
+        <li><a href="../タレント/talents.html">SERVICE</a></li>
+        <li><a href="../問い合わせ/contact.html">CONTACT</a></li>
+        <li><a href="../応募/応募.html">JOIN US</a></li>
       </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>OUR SERVICES</h1>
+    </section>
+
+    <section class="service-section">
+      <div class="service-grid" id="service-grid-container">
+        <!-- ここにサービス一覧がJavaScriptによって自動的に挿入されます -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column"><img src="../ロゴ/ロゴ.png" class="footer-logo" /></div>
+      <div class="footer-column"><h4>MENU</h4><ul><li><a href="../about/about.html">ABOUT</a></li><li><a href="../依頼/依頼.html">REQUEST</a></li></ul></div>
+      <div class="footer-column"><h4>LEGAL</h4><ul><li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li></ul></div>
+      <div class="footer-column"><h4>SOCIAL</h4><ul><li><a href="https://discord.gg/dmTYyaZH8j" target="_blank" rel="noopener noreferrer">Discord</a></li></ul></div>
     </div>
+    <div class="footer-bottom"><p>&copy; 2025 OcearyaGroup</p></div>
+  </footer>
 
-    <div class="footer-social">
-      <ul>
-        <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank">Discord</a></li>
-        <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank">YouTube</a></li>
-        <li><a href="https://tiktok.com/" target="_blank">TikTok</a></li>
-        <li><a href="https://lin.ee/y6uf9zR" target="_blank">LINE</a></li>
-      </ul>
-    </div>
-  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // --- お知らせデータを読み込んで表示する機能 ---
+      const container = document.getElementById('service-grid-container');
 
-  <div class="footer-bottom">
-    <p>© 2025 OcearyaGroup</p>
-  </div>
-</footer>
+      async function loadServices() {
+        try {
+          const response = await fetch('services-data.json'); // ★ 読み込むファイルを変更
+          if (!response.ok) throw new Error('サービスデータの読み込みに失敗');
+          const data = await response.json();
 
-<!-- ハンバーガーメニュー用JS -->
-<script>
-  function toggleMenu() {
-    document.getElementById("main-nav").classList.toggle("active");
-  }
-</script>
+          if (data.length === 0) {
+            container.innerHTML = '<p>現在、提供中のサービスはありません。</p>';
+            return;
+          }
 
+          data.forEach(item => {
+            const card = document.createElement('a');
+            card.href = item.id;
+            card.className = 'service-card reveal';
+            
+            card.innerHTML = `
+              <img src="${item.image}" alt="${item.title}" class="service-card-image">
+              <div class="service-card-content">
+                <div class="service-card-meta">
+                  <span class="service-card-creator">${item.creator}</span>
+                  <span class="service-card-price">${item.price}</span>
+                </div>
+                <h3 class="service-card-title">${item.title}</h3>
+                <p class="service-card-description">${item.description}</p>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+          
+          setupScrollAnimation();
+        } catch (error) {
+          console.error(error);
+          container.innerHTML = '<p>サービスの表示中にエラーが発生しました。</p>';
+        }
+      }
+      
+      function setupScrollAnimation() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+      }
+
+      loadServices();
+    });
+  </script>
 </body>
 </html>
