@@ -1,382 +1,168 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REQUEST | Ocearya Group</title>
+  <link rel="icon" href="../ロゴ/ロゴ.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- ファビコン -->
-  <link rel="icon" href="../ロゴ/ロゴ.png" />
-
-  <!-- Google Fontsの読み込み -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS（HTML内に統合） -->
   <style>
-    /* ---------------------------------- */
-    /* 1. 基本設定とリセット (共通) */
-    /* ---------------------------------- */
-    :root {
-      --bg-color: #0d1117;
-      --text-color: #e6edf3;
-      --primary-color: #3498db;
-      --primary-hover: #5dade2;
-      --header-bg: rgba(13, 17, 23, 0.8);
-      --card-bg: #161b22;
-      --input-bg: #0d1117;
-      --border-color: #30363d;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; height: auto; vertical-align: middle; }
-    a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
-    a:hover { color: var(--primary-hover); }
-    ul { list-style: none; }
+    /* 共通CSS略（Newsと同様） */
+    :root { --text-main: #fff; --text-sub: #d1d1d6; --glass-bg: rgba(20,20,20,0.4); --glass-border: rgba(255,255,255,0.1); --glass-shadow: 0 8px 32px 0 rgba(0,0,0,0.3); --accent: #0a84ff; }
+    body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background: #000; color: var(--text-main); margin: 0; line-height: 1.8; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    .bg-container { position: fixed; inset: 0; z-index: -1; background: #000; }
+    .gradient-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; animation: float 20s infinite alternate; }
+    .orb-1 { bottom: -10%; left: -10%; width: 60vw; height: 60vw; background: #4a00e0; }
+    .bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(30px); }
+    @keyframes float { to { transform: translate(30px, -30px); } }
 
-    /* ---------------------------------- */
-    /* 2. ヘッダー & フッター (共通) */
-    /* ---------------------------------- */
-    .header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 4%; background-color: var(--header-bg);
-      backdrop-filter: blur(10px); position: fixed; width: 100%;
-      top: 0; z-index: 1000; transition: background-color 0.3s ease;
-    }
-    .header-scrolled { background-color: rgba(13, 17, 23, 0.95); }
-    .logo img { height: 45px; }
-    .nav-links { display: flex; }
-    .nav-links li { margin: 0 15px; }
-    .nav-links a {
-      color: var(--text-color); font-weight: bold; font-size: 16px;
-      font-family: 'Montserrat', sans-serif; position: relative; padding-bottom: 5px;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background-color: var(--primary-color);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover::after { width: 100%; }
-    .menu-toggle { display: none; font-size: 28px; background: none; border: none; color: var(--text-color); cursor: pointer; z-index: 1001; }
+    /* ヘッダー */
+    .header { display: flex; justify-content: space-between; padding: 15px 5%; position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(255,255,255,0.01); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .header.scrolled { background: rgba(0,0,0,0.8); }
+    .logo-img { width: 40px; border-radius: 8px; }
+    .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-sub); font-size: 0.9rem; }
+    .nav-links a:hover { color: #fff; }
+    .staff-btn { border: 1px solid #555; padding: 5px 15px; border-radius: 20px; }
+    .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; }
+
+    /* フォームスタイル */
+    .page-wrapper { padding: 150px 5% 100px; max-width: 800px; margin: 0 auto; }
+    .page-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; }
     
-    .site-footer { background-color: #000; padding: 50px 4%; color: #aaa; }
-    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-    .footer-logo { height: 50px; margin-bottom: 20px; }
-    .footer-column h4 { font-family: 'Montserrat', sans-serif; color: #fff; margin-bottom: 20px; font-size: 18px; }
-    .footer-column ul li { margin-bottom: 10px; }
-    .footer-column ul a { color: #aaa; }
-    .footer-column ul a:hover { color: #fff; }
-    .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; font-size: 14px; }
-
-    /* ---------------------------------- */
-    /* 3. 依頼ページ専用スタイル */
-    /* ---------------------------------- */
-    .page-header {
-      padding-top: 150px; padding-bottom: 80px; text-align: center;
-      background: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 1)), url('../images/sample05.png') no-repeat center center;
-      background-size: cover;
+    .glass-form {
+        background: var(--glass-bg); border: 1px solid var(--glass-border);
+        border-radius: 24px; padding: 40px; box-shadow: var(--glass-shadow); backdrop-filter: blur(20px);
     }
-    .page-header h1 { font-size: 3.5rem; font-family: 'Montserrat', sans-serif; animation: fade-in-up 1s ease-out; }
-
-    .request-section {
-      padding: 80px 4%; max-width: 800px; margin: 0 auto;
-    }
-
-    .form-intro { text-align: center; margin-bottom: 50px; }
-    .form-intro h2 { font-size: 2rem; font-family: 'Montserrat', sans-serif; margin-bottom: 15px; }
-    .form-intro p { font-size: 1.1rem; color: #aaa; }
     
-    .request-form { background-color: var(--card-bg); padding: 40px; border-radius: 10px; border: 1px solid var(--border-color); }
     .form-group { margin-bottom: 25px; }
-    .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #ccc; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
     .form-control {
-      width: 100%; padding: 12px 15px; border: 1px solid var(--border-color);
-      border-radius: 6px; background-color: var(--input-bg);
-      color: var(--text-color); font-size: 1rem; font-family: 'Noto Sans JP', sans-serif;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.05); color: #fff; font-size: 1rem; transition: 0.3s;
     }
-    .form-control:focus {
-      outline: none; border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
-    }
-    textarea.form-control { resize: vertical; min-height: 150px; }
-    
-    .submit-btn {
-      display: inline-block; width: 100%; padding: 12px 35px; background-color: var(--primary-color);
-      color: #fff; text-decoration: none; border-radius: 50px; border: none; font-size: 18px;
-      font-weight: bold; cursor: pointer; transition: transform 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-    }
-    .submit-btn:hover { background-color: var(--primary-hover); transform: translateY(-3px); }
+    .form-control:focus { outline: none; border-color: var(--accent); background: rgba(255,255,255,0.1); }
+    textarea.form-control { min-height: 120px; resize: vertical; }
 
-    .note {
-      text-align: center; padding: 15px; margin-top: 20px;
-      background-color: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3);
-      color: #f8b4b4; border-radius: 6px; font-size: 0.9rem;
+    .btn-submit {
+        width: 100%; padding: 15px; border-radius: 50px; background: linear-gradient(135deg, #0071e3, #00c6ff);
+        color: #fff; font-weight: bold; border: none; cursor: pointer; font-size: 1.1rem;
+        box-shadow: 0 5px 15px rgba(0,113,227,0.4); transition: 0.3s; margin-top: 20px;
     }
-    
-    /* 動的フォーム用のスタイル */
-    #dynamic-fields-container {
-        padding-top: 25px;
-        margin-top: 25px;
-        border-top: 1px dashed var(--border-color);
-    }
-    .dynamic-field {
-        animation: fade-in 0.5s ease-out;
-    }
-    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,113,227,0.6); }
 
-    /* ---------------------------------- */
-    /* 4. レスポンシブ対応 */
-    /* ---------------------------------- */
+    /* 動的フィールドのアニメーション */
+    .fade-in { animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
     @media (max-width: 768px) {
-      .nav-links {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background-color: var(--bg-color); flex-direction: column;
-        justify-content: center; align-items: center;
-        transform: translateX(100%); transition: transform 0.4s ease-in-out;
-      }
-      .nav-links.active { transform: translateX(0); }
-      .nav-links li { margin: 20px 0; }
-      .nav-links a { font-size: 24px; }
-      .menu-toggle { display: block; }
-      .page-header h1 { font-size: 2.8rem; }
-      .request-form { padding: 25px; }
-    }
-    
-    /* ---------------------------------- */
-    /* 5. アニメーションキーフレーム */
-    /* ---------------------------------- */
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+        .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; background: #000; flex-direction: column; justify-content: center; transform: translateX(100%); transition: 0.3s; }
+        .nav-links.active { transform: translateX(0); }
+        .menu-toggle { display: block; z-index: 1001; }
+        .glass-form { padding: 25px; }
     }
   </style>
 </head>
-
 <body>
-  <!-- ヘッダー -->
+  <div class="bg-container"><div class="gradient-orb orb-1"></div><div class="bg-overlay"></div></div>
+
   <header class="header">
-    <div class="logo">
-      <a href="../index.html" title="ホーム"><img src="../ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" /></a>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <a href="../index.html"><img src="../ロゴ/sample01.jpg" class="logo-img"></a>
+        <span style="font-weight:700;">Ocearya</span>
     </div>
     <nav>
+      <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
       <ul class="nav-links">
-        <li><a href="../index.html" title="ホーム">HOME</a></li>
-        <li><a href="../about/about.html" title="Ocearya Groupの概要">ABOUT</a></li>
-        <li><a href="../news/news.html" title="最新のニュース">NEWS</a></li>
-        <li><a href="../依頼/依頼.html" title="依頼フォーム">REQUEST</a></li>
-        <li><a href="../タレント/talents.html" title="出品サービスを見る">SERVICE</a></li>
-        <li><a href="../問い合わせ/contact.html" title="お問い合わせフォーム">CONTACT</a></li>
-        <li><a href="../応募/応募.html" title="応募フォーム">JOIN US</a></li>
+        <li><a href="../index.html">ホーム</a></li>
+        <li><a href="../about/about.html">概要</a></li>
+        <li><a href="../news/news.html">ニュース</a></li>
+        <li><a href="../タレント/talents.html">サービス</a></li>
+        <li><a href="依頼.html">依頼する</a></li>
+        <li><a href="../問い合わせ/contact.html">コンタクト</a></li>
+        <li><a href="../staff/login.html" class="staff-btn"><i class="fa-solid fa-lock"></i> Staff</a></li>
       </ul>
     </nav>
-    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
   </header>
 
-  <main>
-    <!-- ページヘッダー -->
-    <section class="page-header">
-      <h1>REQUEST</h1>
-    </section>
+  <div class="page-wrapper">
+    <h1 class="page-title">Request Form</h1>
+    <p style="text-align: center; margin-bottom: 40px; color: #aaa;">
+      あなたのアイデアを形にします。詳細をお聞かせください。
+    </p>
 
-    <!-- 依頼フォームセクション -->
-    <section class="request-section">
-      <div class="form-intro">
-        <h2>依頼フォーム</h2>
-        <p>あなたの「創りたい」を形にします。ご依頼内容をご記入ください。</p>
+    <form action="https://script.google.com/macros/s/AKfycbyFB6liyPRfuopzHeYC14RzMHxXIeVY5NjI4t4Kvcrk/dev" method="POST" class="glass-form">
+      <div class="form-group">
+        <label>お名前 (ニックネーム可)</label>
+        <input type="text" name="名前" class="form-control" placeholder="例: 永和" required>
       </div>
 
-      <form action="https://script.google.com/macros/s/AKfycbyFB6liyPRfuopzHeYC14RzMHxXIeVY5NjI4t4Kvcrk/dev" method="POST" class="request-form">
-        <!-- 基本情報 -->
-        <div class="form-group">
-          <label for="name">お名前（ニックネーム可）</label>
-          <input type="text" id="name" name="名前" class="form-control" placeholder="例：山田 太郎" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="contact-info">連絡先（メールアドレス または Discord IDなど）</label>
-          <input type="text" id="contact-info" name="連絡先" class="form-control" placeholder="例：email@example.com または user#1234" required>
-        </div>
-
-        <hr style="border-color: var(--border-color); margin: 30px 0;">
-
-        <!-- 依頼内容 -->
-        <div class="form-group">
-          <label for="request-category">依頼の内容</label>
-          <select id="request-category" name="依頼内容カテゴリ" class="form-control" required>
-            <option value="" disabled selected>選択してください</option>
-            <option value="デザイン">デザイン</option>
-            <option value="動画編集">動画編集</option>
-            <option value="プログラミング">プログラミング</option>
-            <option value="イラストモデリング">イラストモデリング</option>
-            <option value="ITパスポートコーチング">ITパスポートコーチング</option>
-            <option value="相談">相談</option>
-            <option value="その他">その他</option>
-          </select>
-        </div>
-        
-        <!-- ここにカテゴリ別の詳細入力欄が動的に挿入されます -->
-        <div id="dynamic-fields-container"></div>
-        
-        <div class="form-group">
-          <label for="request-title">依頼タイトル</label>
-          <input type="text" id="request-title" name="依頼タイトル" class="form-control" placeholder="例：YouTubeチャンネルのロゴ制作" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="request-details">依頼内容の詳細</label>
-          <textarea id="request-details" name="依頼詳細" class="form-control" placeholder="依頼内容について、できるだけ詳しくご記入ください。" required></textarea>
-        </div>
-        
-        <hr style="border-color: var(--border-color); margin: 30px 0;">
-        
-        <!-- 予算・納期 -->
-        <div class="form-group">
-          <label for="budget">ご予算（円）</label>
-          <input type="number" id="budget" name="依頼金額" class="form-control" placeholder="例：10000" required>
-        </div>
-
-        <div class="form-group">
-            <label for="payment-plan">送金プラン</label>
-            <select id="payment-plan" name="送金プラン" class="form-control" required>
-              <option value="" disabled selected>選択してください</option>
-              <option value="ココナラ">ココナラ</option>
-              <option value="クリエティア">クリエティア</option>
-              <option value="その他を希望">その他を希望</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="due-date">完了希望日</label>
-            <input type="date" id="due-date" name="完了希望日" class="form-control" required>
-        </div>
-
-        <p class="note">※オンラインで完結できる内容のサービスをご提案ください。対面での対応が必要なサービスは依頼できません。</p>
-        
-        <button type="submit" class="submit-btn" style="margin-top: 20px;">依頼内容を送信する</button>
-      </form>
-    </section>
-  </main>
-
-  <!-- フッター -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-column">
-        <img src="../ロゴ/ロゴ.png" alt="Ocearya公式ロゴ" class="footer-logo" />
-        <p>&copy; 2025 OcearyaGroup</p>
+      <div class="form-group">
+        <label>連絡先 (メール または Discord ID)</label>
+        <input type="text" name="連絡先" class="form-control" placeholder="例: user#1234" required>
       </div>
-      <div class="footer-column">
-        <h4>MENU</h4>
-        <ul>
-          <li><a href="../about/about.html">ABOUT</a></li>
-          <li><a href="../依頼/依頼.html">REQUEST</a></li>
-          <li><a href="../問い合わせ/contact.html">CONTACT</a></li>
-          <li><a href="../応募/応募.html">JOIN US</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>LEGAL</h4>
-        <ul>
-          <li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>SOCIAL</h4>
-        <ul>
-          <li><a href="https://discord.gg/dmTYyaZH8j" target="_blank" rel="noopener noreferrer">Discord</a></li>
-          <li><a href="https://www.youtube.com/channel/UCSizftXsuDzNXNQCjg98G4Q" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-          <li><a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
-          <li><a href="https://lin.ee/y6uf9zR" target="_blank" rel="noopener noreferrer">LINE</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Ocearya Group - Creative team by TOWA</p>
-    </div>
-  </footer>
 
-  <!-- JavaScript (HTML内に統合) -->
+      <div class="form-group">
+        <label>依頼カテゴリ</label>
+        <select id="category" name="依頼内容カテゴリ" class="form-control" required>
+          <option value="" disabled selected>選択してください</option>
+          <option value="デザイン">デザイン</option>
+          <option value="動画編集">動画編集</option>
+          <option value="プログラミング">プログラミング</option>
+          <option value="イラストモデリング">イラスト/モデリング</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div id="dynamic-fields" style="margin-bottom: 25px;"></div>
+
+      <div class="form-group">
+        <label>依頼タイトル</label>
+        <input type="text" name="依頼タイトル" class="form-control" placeholder="例: MVイラスト制作について" required>
+      </div>
+
+      <div class="form-group">
+        <label>詳細内容</label>
+        <textarea name="依頼詳細" class="form-control" placeholder="具体的な内容をご記入ください" required></textarea>
+      </div>
+
+      <div class="form-group" style="display: flex; gap: 20px;">
+          <div style="flex: 1;">
+            <label>予算 (円)</label>
+            <input type="number" name="依頼金額" class="form-control" placeholder="10000" required>
+          </div>
+          <div style="flex: 1;">
+            <label>完了希望日</label>
+            <input type="date" name="完了希望日" class="form-control" required>
+          </div>
+      </div>
+
+      <button type="submit" class="btn-submit">送信する <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      
-      // --- ハンバーガーメニュー ---
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
+    document.querySelector('.menu-toggle').addEventListener('click', () => document.querySelector('.nav-links').classList.toggle('active'));
+    window.addEventListener('scroll', () => document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50));
 
-      // --- ヘッダーのスクロール効果 ---
-      const header = document.querySelector('.header');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.classList.add('header-scrolled');
-        } else {
-          header.classList.remove('header-scrolled');
+    const category = document.getElementById('category');
+    const dynamic = document.getElementById('dynamic-fields');
+
+    category.addEventListener('change', (e) => {
+        let html = '';
+        const val = e.target.value;
+        if(val === 'デザイン') {
+            html = `<div class="form-group fade-in"><label>希望テイスト</label><input type="text" name="詳細_テイスト" class="form-control" placeholder="クール、ポップなど"></div>`;
+        } else if(val === '動画編集') {
+            html = `<div class="form-group fade-in"><label>動画の長さ目安</label><input type="text" name="詳細_長さ" class="form-control" placeholder="例: 10分程度"></div>`;
+        } else if(val === 'プログラミング') {
+            html = `<div class="form-group fade-in"><label>使用言語・環境</label><input type="text" name="詳細_言語" class="form-control" placeholder="HTML/CSS, Python等"></div>`;
         }
-      });
-      
-      // --- ★ 動的フォーム機能 ---
-      const categorySelect = document.getElementById('request-category');
-      const dynamicContainer = document.getElementById('dynamic-fields-container');
-
-      categorySelect.addEventListener('change', function() {
-        const selectedCategory = this.value;
-        let htmlContent = '';
-
-        switch (selectedCategory) {
-          case 'デザイン':
-            htmlContent = `
-              <div class="form-group dynamic-field">
-                <label for="design-type">デザインの種類</label>
-                <input type="text" id="design-type" name="デザイン詳細_種類" class="form-control" placeholder="例：ロゴ、サムネイル、Webサイトデザインなど" required>
-              </div>
-              <div class="form-group dynamic-field">
-                <label for="design-taste">希望のテイストやカラー</label>
-                <input type="text" id="design-taste" name="デザイン詳細_テイスト" class="form-control" placeholder="例：青を基調としたクールな感じ、ポップで可愛い感じなど" required>
-              </div>
-            `;
-            break;
-          case '動画編集':
-            htmlContent = `
-              <div class="form-group dynamic-field">
-                <label for="video-length">完成動画の長さ（目安）</label>
-                <input type="text" id="video-length" name="動画編集詳細_長さ" class="form-control" placeholder="例：10分程度" required>
-              </div>
-              <div class="form-group dynamic-field">
-                <label for="video-reference">参考動画のURL（任意）</label>
-                <input type="url" id="video-reference" name="動画編集詳細_参考URL" class="form-control" placeholder="https://www.youtube.com/watch?v=...">
-              </div>
-            `;
-            break;
-          case 'プログラミング':
-             htmlContent = `
-              <div class="form-group dynamic-field">
-                <label for="programming-lang">希望の言語や技術</label>
-                <input type="text" id="programming-lang" name="プログラミング詳細_言語" class="form-control" placeholder="例：JavaScript, Python, Webサイト制作など" required>
-              </div>
-              <div class="form-group dynamic-field">
-                <label for="programming-function">実装したい機能</label>
-                <textarea id="programming-function" name="プログラミング詳細_機能" class="form-control" placeholder="例：Discordの自動応答BOT、特定のデータを集計するツールなど" required></textarea>
-              </div>
-            `;
-            break;
-        }
-
-        dynamicContainer.innerHTML = htmlContent;
-      });
-
+        dynamic.innerHTML = html;
     });
   </script>
 </body>
-
 </html>
