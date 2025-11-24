@@ -1,184 +1,120 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SERVICES | Ocearya Group</title>
+  <link rel="icon" href="../ロゴ/ロゴ.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <link rel="icon" href="../ロゴ/ロゴ.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
-    /* ---------------------------------- */
-    /* 1. 基本設定とリセット (共通) */
-    /* ---------------------------------- */
-    :root {
-      --bg-color: #0d1117; --text-color: #e6edf3; --primary-color: #3498db;
-      --primary-hover: #5dade2; --header-bg: rgba(13, 17, 23, 0.8);
-      --card-bg: #161b22; --border-color: #30363d;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-color);
-      color: var(--text-color); overflow-x: hidden;
-    }
-    a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
-    a:hover { color: var(--primary-hover); }
+    /* 共通CSS (Request等と同じ) */
+    :root { --text-main: #fff; --text-sub: #d1d1d6; --glass-bg: rgba(20,20,20,0.4); --glass-border: rgba(255,255,255,0.1); --glass-shadow: 0 8px 32px 0 rgba(0,0,0,0.3); }
+    body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background: #000; color: var(--text-main); margin: 0; line-height: 1.8; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    .bg-container { position: fixed; inset: 0; z-index: -1; background: #000; }
+    .gradient-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: float 20s infinite alternate; }
+    .orb-1 { top: 20%; right: 20%; width: 50vw; height: 50vw; background: #00c6ff; }
+    .bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(30px); }
+    @keyframes float { to { transform: translate(-40px, 40px); } }
 
-    /* ---------------------------------- */
-    /* 2. ヘッダー & フッター (共通) */
-    /* ---------------------------------- */
-    .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 4%; background-color: var(--header-bg); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; }
-    .logo img { height: 45px; }
-    .nav-links { display: flex; list-style: none; }
-    .nav-links li { margin: 0 15px; }
-    .nav-links a { color: var(--text-color); font-weight: bold; font-family: 'Montserrat', sans-serif; }
-    .menu-toggle { display: none; font-size: 28px; background: none; border: none; color: var(--text-color); cursor: pointer; z-index: 1001; }
-    .site-footer { background-color: #000; padding: 50px 4%; color: #aaa; }
-    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-    .footer-logo { height: 50px; }
-    .footer-column h4 { font-family: 'Montserrat', sans-serif; color: #fff; margin-bottom: 20px; }
-    .footer-column ul { list-style: none; padding: 0; }
-    .footer-column ul li { margin-bottom: 10px; }
-    .footer-column ul a { color: #aaa; }
-    .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; }
-    
-    /* ---------------------------------- */
-    /* 3. サービス一覧ページ専用スタイル */
-    /* ---------------------------------- */
-    .page-header {
-      padding-top: 150px; padding-bottom: 80px; text-align: center;
-      background: linear-gradient(rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 1)), url('../images/sample05.png') no-repeat center center;
-      background-size: cover;
-    }
-    .page-header h1 { font-size: 3.5rem; font-family: 'Montserrat', sans-serif; }
-    
-    .service-section { padding: 80px 4%; max-width: 1200px; margin: 0 auto; }
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    /* Header */
+    .header { display: flex; justify-content: space-between; padding: 15px 5%; position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(255,255,255,0.01); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .header.scrolled { background: rgba(0,0,0,0.8); }
+    .logo-img { width: 40px; border-radius: 8px; }
+    .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-sub); font-size: 0.9rem; }
+    .nav-links a:hover { color: #fff; }
+    .staff-btn { border: 1px solid #555; padding: 5px 15px; border-radius: 20px; }
+    .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; }
 
-    .service-card {
-        background-color: var(--card-bg); border-radius: 10px; overflow: hidden;
-        color: var(--text-color); display: flex; flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .service-card-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-    .service-card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-    .service-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.9rem; }
-    .service-card-creator { background-color: #555; color: #fff; padding: 3px 10px; border-radius: 50px; font-size: 0.8rem; }
-    .service-card-price { background-color: var(--primary-color); color: #fff; padding: 3px 10px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
-    .service-card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; flex-grow: 1; }
-    .service-card-description { font-size: 0.95rem; line-height: 1.6; color: #ccc; }
+    /* Service Grid */
+    .page-title { padding: 160px 5% 60px; text-align: center; font-size: 3rem; font-weight: 800; background: linear-gradient(to bottom, #fff, #bbb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto 100px; padding: 0 5%; }
+    
+    .glass-card {
+        background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px;
+        overflow: hidden; display: flex; flex-direction: column; transition: 0.4s; backdrop-filter: blur(20px);
+        box-shadow: var(--glass-shadow);
+    }
+    .glass-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.3); background: rgba(50,50,50,0.5); }
+    
+    .card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .card-body { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+    .card-meta { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85rem; }
+    .tag-price { background: #0a84ff; color: #fff; padding: 2px 10px; border-radius: 50px; font-weight: bold; }
+    .card-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 10px; flex: 1; }
+    .card-desc { font-size: 0.9rem; color: #bbb; line-height: 1.6; }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; /* 省略 */ } .menu-toggle { display: block; }
-      .page-header h1 { font-size: 2.8rem; }
+        .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; background: #000; flex-direction: column; justify-content: center; transform: translateX(100%); transition: 0.3s; }
+        .nav-links.active { transform: translateX(0); }
+        .menu-toggle { display: block; z-index: 1001; }
     }
   </style>
 </head>
-
 <body>
+  <div class="bg-container"><div class="gradient-orb orb-1"></div><div class="bg-overlay"></div></div>
+
   <header class="header">
-    <div class="logo"><a href="../index.html" title="ホーム"><img src="../ロゴ/ロゴ.png" alt="Ocearya Group公式ロゴ" /></a></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <a href="../index.html"><img src="../ロゴ/sample01.jpg" class="logo-img"></a>
+        <span style="font-weight:700;">Ocearya</span>
+    </div>
     <nav>
+      <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
       <ul class="nav-links">
-        <li><a href="../index.html">HOME</a></li>
-        <li><a href="../about/about.html">ABOUT</a></li>
-        <li><a href="../news/news.html">NEWS</a></li>
-        <li><a href="../依頼/依頼.html">REQUEST</a></li>
-        <li><a href="../タレント/talents.html">SERVICE</a></li>
-        <li><a href="../問い合わせ/contact.html">CONTACT</a></li>
-        <li><a href="../応募/応募.html">JOIN US</a></li>
+        <li><a href="../index.html">ホーム</a></li>
+        <li><a href="../about/about.html">概要</a></li>
+        <li><a href="../news/news.html">ニュース</a></li>
+        <li><a href="talents.html">サービス</a></li>
+        <li><a href="../依頼/依頼.html">依頼する</a></li>
+        <li><a href="../問い合わせ/contact.html">コンタクト</a></li>
+        <li><a href="../staff/login.html" class="staff-btn"><i class="fa-solid fa-lock"></i> Staff</a></li>
       </ul>
     </nav>
-    <button class="menu-toggle" aria-label="メニューを開く">&#9776;</button>
   </header>
 
-  <main>
-    <section class="page-header">
-      <h1>OUR SERVICES</h1>
-    </section>
+  <h1 class="page-title">Our Services</h1>
 
-    <section class="service-section">
-      <div class="service-grid" id="service-grid-container">
-        <!-- ここにサービス一覧がJavaScriptによって自動的に挿入されます -->
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-column"><img src="../ロゴ/ロゴ.png" class="footer-logo" /></div>
-      <div class="footer-column"><h4>MENU</h4><ul><li><a href="../about/about.html">ABOUT</a></li><li><a href="../依頼/依頼.html">REQUEST</a></li></ul></div>
-      <div class="footer-column"><h4>LEGAL</h4><ul><li><a href="../プライバシーポリシー/privacy.html">プライバシーポリシー</a></li></ul></div>
-      <div class="footer-column"><h4>SOCIAL</h4><ul><li><a href="https://discord.gg/dmTYyaZH8j" target="_blank" rel="noopener noreferrer">Discord</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2025 OcearyaGroup</p></div>
-  </footer>
+  <div class="service-grid" id="service-container">
+    <!-- JSで挿入 -->
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // --- お知らせデータを読み込んで表示する機能 ---
-      const container = document.getElementById('service-grid-container');
+    document.querySelector('.menu-toggle').addEventListener('click', () => document.querySelector('.nav-links').classList.toggle('active'));
+    window.addEventListener('scroll', () => document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50));
 
-      async function loadServices() {
+    async function loadServices() {
+        const container = document.getElementById('service-container');
         try {
-          const response = await fetch('services-data.json'); // ★ 読み込むファイルを変更
-          if (!response.ok) throw new Error('サービスデータの読み込みに失敗');
-          const data = await response.json();
+            const res = await fetch('services-data.json');
+            if(!res.ok) throw new Error('Error');
+            const data = await res.json();
+            if(data.length === 0) { container.innerHTML = '<p style="text-align:center;">サービスがありません。</p>'; return; }
 
-          if (data.length === 0) {
-            container.innerHTML = '<p>現在、提供中のサービスはありません。</p>';
-            return;
-          }
-
-          data.forEach(item => {
-            const card = document.createElement('a');
-            card.href = item.id;
-            card.className = 'service-card reveal';
-            
-            card.innerHTML = `
-              <img src="${item.image}" alt="${item.title}" class="service-card-image">
-              <div class="service-card-content">
-                <div class="service-card-meta">
-                  <span class="service-card-creator">${item.creator}</span>
-                  <span class="service-card-price">${item.price}</span>
-                </div>
-                <h3 class="service-card-title">${item.title}</h3>
-                <p class="service-card-description">${item.description}</p>
-              </div>
-            `;
-            container.appendChild(card);
-          });
-          
-          setupScrollAnimation();
-        } catch (error) {
-          console.error(error);
-          container.innerHTML = '<p>サービスの表示中にエラーが発生しました。</p>';
-        }
-      }
-      
-      function setupScrollAnimation() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-      }
-
-      loadServices();
-    });
+            data.forEach(item => {
+                const card = document.createElement('a');
+                card.href = item.id;
+                card.className = 'glass-card';
+                card.innerHTML = `
+                    <img src="${item.image}" class="card-img" alt="service">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>by ${item.creator}</span>
+                            <span class="tag-price">${item.price}</span>
+                        </div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.description}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        } catch(e) { container.innerHTML = '<p style="text-align:center;">読み込みエラー。</p>'; }
+    }
+    loadServices();
   </script>
 </body>
 </html>
